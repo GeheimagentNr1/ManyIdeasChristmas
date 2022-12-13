@@ -8,11 +8,6 @@ public class FireplaceDarkOak extends Fireplace {
 	
 	public static final String registry_name = "fireplace_dark_oak";
 	
-	public FireplaceDarkOak() {
-		
-		super( registry_name );
-	}
-	
 	@Override
 	public Item getBlockItem( Item.Properties properties ) {
 		

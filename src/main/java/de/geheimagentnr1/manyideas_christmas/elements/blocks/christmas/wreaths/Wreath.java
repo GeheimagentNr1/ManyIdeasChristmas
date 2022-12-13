@@ -47,7 +47,6 @@ public class Wreath extends Block implements BlockItemInterface, BlockRenderType
 				.sound( SoundType.GRASS )
 				.noOcclusion()
 		);
-		setRegistryName( registry_name );
 	}
 	
 	@NotNull

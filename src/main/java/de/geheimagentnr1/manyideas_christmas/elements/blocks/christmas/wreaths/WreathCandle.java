@@ -11,6 +11,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -33,8 +34,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Random;
 
 
 public class WreathCandle extends Block implements BlockItemInterface, BlockRenderTypeInterface {
@@ -106,7 +105,6 @@ public class WreathCandle extends Block implements BlockItemInterface, BlockRend
 				.lightLevel( value -> value.getValue( ModBlockStateProperties.WREATH_CANDLE_LIT_COUNT ) * 3 )
 				.noOcclusion()
 		);
-		setRegistryName( registry_name );
 	}
 	
 	@NotNull
@@ -189,7 +187,7 @@ public class WreathCandle extends Block implements BlockItemInterface, BlockRend
 		@NotNull BlockState state,
 		@NotNull Level level,
 		@NotNull BlockPos pos,
-		@NotNull Random random ) {
+		@NotNull RandomSource randomSource ) {
 		
 		double rotation = switch( state.getValue( BlockStateProperties.HORIZONTAL_FACING ) ) {
 			case NORTH -> 270.0;//180.0
@@ -199,21 +197,21 @@ public class WreathCandle extends Block implements BlockItemInterface, BlockRend
 			default -> 0.0;
 		};
 		switch( state.getValue( ModBlockStateProperties.WREATH_CANDLE_LIT_COUNT ) ) {
-			case 1 -> FlameHelper.animateFlames( new Vec3( 3.5, 9, 8 ), level, pos, random, rotation );
+			case 1 -> FlameHelper.animateFlames( new Vec3( 3.5, 9, 8 ), level, pos, randomSource, rotation );
 			case 2 -> {
-				FlameHelper.animateFlames( new Vec3( 3.5, 8, 8 ), level, pos, random, rotation );
-				FlameHelper.animateFlames( new Vec3( 8, 9, 12.5 ), level, pos, random, rotation );
+				FlameHelper.animateFlames( new Vec3( 3.5, 8, 8 ), level, pos, randomSource, rotation );
+				FlameHelper.animateFlames( new Vec3( 8, 9, 12.5 ), level, pos, randomSource, rotation );
 			}
 			case 3 -> {
-				FlameHelper.animateFlames( new Vec3( 3.5, 7, 8 ), level, pos, random, rotation );
-				FlameHelper.animateFlames( new Vec3( 8, 8, 12.5 ), level, pos, random, rotation );
-				FlameHelper.animateFlames( new Vec3( 8, 9, 3.5 ), level, pos, random, rotation );
+				FlameHelper.animateFlames( new Vec3( 3.5, 7, 8 ), level, pos, randomSource, rotation );
+				FlameHelper.animateFlames( new Vec3( 8, 8, 12.5 ), level, pos, randomSource, rotation );
+				FlameHelper.animateFlames( new Vec3( 8, 9, 3.5 ), level, pos, randomSource, rotation );
 			}
 			case 4 -> {
-				FlameHelper.animateFlames( new Vec3( 3.5, 6, 8 ), level, pos, random, rotation );
-				FlameHelper.animateFlames( new Vec3( 8, 7, 12.5 ), level, pos, random, rotation );
-				FlameHelper.animateFlames( new Vec3( 8, 8, 3.5 ), level, pos, random, rotation );
-				FlameHelper.animateFlames( new Vec3( 12.5, 9, 8 ), level, pos, random, rotation );
+				FlameHelper.animateFlames( new Vec3( 3.5, 6, 8 ), level, pos, randomSource, rotation );
+				FlameHelper.animateFlames( new Vec3( 8, 7, 12.5 ), level, pos, randomSource, rotation );
+				FlameHelper.animateFlames( new Vec3( 8, 8, 3.5 ), level, pos, randomSource, rotation );
+				FlameHelper.animateFlames( new Vec3( 12.5, 9, 8 ), level, pos, randomSource, rotation );
 			}
 		}
 	}

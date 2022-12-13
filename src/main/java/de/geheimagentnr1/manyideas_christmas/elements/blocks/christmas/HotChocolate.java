@@ -38,7 +38,6 @@ public class HotChocolate extends Block implements BlockItemInterface, BlockRend
 				.sound( SoundType.STONE )
 				.noOcclusion()
 		);
-		setRegistryName( registry_name );
 	}
 	
 	@NotNull

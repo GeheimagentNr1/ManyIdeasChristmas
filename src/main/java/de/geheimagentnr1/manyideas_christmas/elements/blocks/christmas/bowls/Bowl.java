@@ -8,11 +8,10 @@ import de.geheimagentnr1.manyideas_core.elements.blocks.BlockRenderTypeInterface
 import de.geheimagentnr1.manyideas_core.util.TranslationKeyHelper;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeMemory;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeVector;
-import net.minecraft.Util;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -69,7 +68,7 @@ public abstract class Bowl extends Block implements BlockItemInterface, BlockRen
 		VoxelShapeVector.create( 4.5, 3, 3.5, 12, 3.5, 11.5 )
 	);
 	
-	Bowl( String registry_name ) {
+	Bowl() {
 		
 		super(
 			Properties.of( Material.WOOD )
@@ -77,7 +76,6 @@ public abstract class Bowl extends Block implements BlockItemInterface, BlockRen
 				.sound( SoundType.WOOD )
 				.noOcclusion()
 		);
-		setRegistryName( registry_name );
 	}
 	
 	@NotNull
@@ -132,15 +130,14 @@ public abstract class Bowl extends Block implements BlockItemInterface, BlockRen
 					return InteractionResult.SUCCESS;
 				} else {
 					if( level.isClientSide() ) {
-						player.sendMessage(
-							new TranslatableComponent(
+						player.sendSystemMessage(
+							Component.translatable(
 								TranslationKeyHelper.generateMessageTranslationKey(
 									ManyIdeasChristmas.MODID,
 									"bowl_to_few_apples"
 								),
 								APPLE_COUNT
-							),
-							Util.NIL_UUID
+							)
 						);
 					}
 				}
@@ -159,15 +156,14 @@ public abstract class Bowl extends Block implements BlockItemInterface, BlockRen
 						return InteractionResult.SUCCESS;
 					} else {
 						if( level.isClientSide() ) {
-							player.sendMessage(
-								new TranslatableComponent(
+							player.sendSystemMessage(
+								Component.translatable(
 									TranslationKeyHelper.generateMessageTranslationKey(
 										ManyIdeasChristmas.MODID,
 										"bowl_to_few_cookies"
 									),
 									COOKIE_COUNT
-								),
-								Util.NIL_UUID
+								)
 							);
 						}
 					}

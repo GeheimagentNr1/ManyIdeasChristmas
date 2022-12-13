@@ -62,8 +62,7 @@ public class ChristmasTree extends MultiBlock implements BlockRenderTypeInterfac
 			Properties.of( Material.WOOD )
 				.strength( 3.5F )
 				.sound( SoundType.WOOD )
-				.noOcclusion(),
-			registry_name
+				.noOcclusion()
 		);
 	}
 	

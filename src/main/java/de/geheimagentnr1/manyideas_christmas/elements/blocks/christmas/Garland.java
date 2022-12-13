@@ -62,7 +62,6 @@ public class Garland extends Block implements BlockItemInterface, BlockRenderTyp
 				.sound( SoundType.GRASS )
 				.noOcclusion()
 		);
-		setRegistryName( registry_name );
 	}
 	
 	@NotNull

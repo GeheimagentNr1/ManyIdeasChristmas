@@ -175,15 +175,14 @@ public abstract class Fireplace extends MultiBlock implements BlockRenderTypeInt
 		VoxelShapeVector.create( 15, 3, 13.5, 15.5, 16, 14 )
 	);
 	
-	Fireplace( String registry_name ) {
+	Fireplace() {
 		
 		super(
 			Properties.of( Material.STONE, MaterialColor.COLOR_RED )
 				.requiresCorrectToolForDrops()
 				.noOcclusion()
 				.strength( 2.0F, 6.0F )
-				.sound( SoundType.STONE ),
-			registry_name
+				.sound( SoundType.STONE )
 		);
 	}
 	

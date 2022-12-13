@@ -8,11 +8,6 @@ public class BowlJungle extends Bowl {
 	
 	public static final String registry_name = "bowl_jungle";
 	
-	public BowlJungle() {
-		
-		super( registry_name );
-	}
-	
 	@Override
 	public Item getBlockItem( Item.Properties _properties ) {
 		

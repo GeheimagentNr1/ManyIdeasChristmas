@@ -49,7 +49,6 @@ public class PlushiCat extends EveryDirectionBlock implements BlockItemInterface
 				.sound( SoundType.WOOL )
 				.noOcclusion()
 		);
-		setRegistryName( registry_name );
 	}
 	
 	@NotNull

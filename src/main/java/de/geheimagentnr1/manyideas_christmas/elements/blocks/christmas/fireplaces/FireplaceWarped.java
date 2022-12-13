@@ -8,11 +8,6 @@ public class FireplaceWarped extends Fireplace {
 	
 	public static final String registry_name = "fireplace_warped";
 	
-	public FireplaceWarped() {
-		
-		super( registry_name );
-	}
-	
 	@Override
 	public Item getBlockItem( Item.Properties properties ) {
 		

@@ -8,6 +8,7 @@ import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeVector;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -27,7 +28,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
-import java.util.Random;
 
 
 public class GoldenStar extends LanternBlock implements BlockItemInterface, BlockRenderTypeInterface {
@@ -64,7 +64,6 @@ public class GoldenStar extends LanternBlock implements BlockItemInterface, Bloc
 				.noOcclusion()
 		
 		);
-		setRegistryName( registry_name );
 	}
 	
 	@NotNull
@@ -105,9 +104,9 @@ public class GoldenStar extends LanternBlock implements BlockItemInterface, Bloc
 		@NotNull BlockState state,
 		@NotNull Level level,
 		@NotNull BlockPos pos,
-		@NotNull Random random ) {
+		@NotNull RandomSource randomSource ) {
 		
-		FlameHelper.animateFlames( new Vec3( 8, 12, 8 ), level, pos, random, 0 );
+		FlameHelper.animateFlames( new Vec3( 8, 12, 8 ), level, pos, randomSource, 0 );
 	}
 	
 	protected void createBlockStateDefinition( StateDefinition.Builder<Block, BlockState> builder ) {
