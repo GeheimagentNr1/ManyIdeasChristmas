@@ -1,0 +1,12 @@
+{
+	"variants": {
+		"facing=north,hanging=false": { "model": "manyideas_christmas:block/christmas/golden_star/golden_star" },
+		"facing=east,hanging=false":  { "model": "manyideas_christmas:block/christmas/golden_star/golden_star", "y": 90 },
+		"facing=south,hanging=false": { "model": "manyideas_christmas:block/christmas/golden_star/golden_star", "y": 180 },
+		"facing=west,hanging=false":  { "model": "manyideas_christmas:block/christmas/golden_star/golden_star", "y": 270 },
+		"facing=north,hanging=true":  { "model": "manyideas_christmas:block/christmas/golden_star/golden_star_hanging" },
+		"facing=east,hanging=true":   { "model": "manyideas_christmas:block/christmas/golden_star/golden_star_hanging", "y": 90 },
+		"facing=south,hanging=true":  { "model": "manyideas_christmas:block/christmas/golden_star/golden_star_hanging", "y": 180 },
+		"facing=west,hanging=true":   { "model": "manyideas_christmas:block/christmas/golden_star/golden_star_hanging", "y": 270 }
+	}
+}

@@ -1,0 +1,29 @@
+{
+	"type":  "minecraft:block",
+	"pools": [
+		{
+			"rolls":      1,
+			"entries":    [
+				{
+					"type":       "minecraft:item",
+					"conditions": [
+						{
+							"condition":  "minecraft:block_state_property",
+							"block":      "manyideas_christmas:fireplace_warped",
+							"properties": {
+								"y": "0",
+								"z": "0"
+							}
+						}
+					],
+					"name":       "manyideas_christmas:fireplace_warped"
+				}
+			],
+			"conditions": [
+				{
+					"condition": "minecraft:survives_explosion"
+				}
+			]
+		}
+	]
+}

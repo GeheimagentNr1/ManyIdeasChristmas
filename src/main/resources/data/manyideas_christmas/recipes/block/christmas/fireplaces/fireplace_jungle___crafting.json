@@ -1,0 +1,22 @@
+{
+	"type":    "minecraft:crafting_shaped",
+	"pattern": [
+		"BWB",
+		"WIW",
+		"BWB"
+	],
+	"key":     {
+		"B": {
+			"item": "minecraft:bricks"
+		},
+		"W": {
+			"item": "manyideas_core:wood_stripped_smooth_jungle"
+		},
+		"I": {
+			"item": "manyideas_core:plate_iron"
+		}
+	},
+	"result":  {
+		"item": "manyideas_christmas:fireplace_jungle"
+	}
+}

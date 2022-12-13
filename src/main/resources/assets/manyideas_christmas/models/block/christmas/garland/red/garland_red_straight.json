@@ -1,0 +1,6 @@
+{
+	"parent":   "manyideas_christmas:block/christmas/templates/garlands/garland_decorated_straight",
+	"textures": {
+		"decoration": "manyideas_christmas:block/christmas/decorations/red_decoration"
+	}
+}

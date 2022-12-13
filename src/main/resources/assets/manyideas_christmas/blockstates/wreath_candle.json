@@ -1,0 +1,24 @@
+{
+	"variants": {
+		"facing=north,lit_count=0": { "model": "manyideas_christmas:block/christmas/wreaths/candle/wreath_candle_lit_0", "y": 90 },
+		"facing=east,lit_count=0":  { "model": "manyideas_christmas:block/christmas/wreaths/candle/wreath_candle_lit_0", "y": 180 },
+		"facing=south,lit_count=0": { "model": "manyideas_christmas:block/christmas/wreaths/candle/wreath_candle_lit_0", "y": 270 },
+		"facing=west,lit_count=0":  { "model": "manyideas_christmas:block/christmas/wreaths/candle/wreath_candle_lit_0" },
+		"facing=north,lit_count=1": { "model": "manyideas_christmas:block/christmas/wreaths/candle/wreath_candle_lit_1", "y": 90 },
+		"facing=east,lit_count=1":  { "model": "manyideas_christmas:block/christmas/wreaths/candle/wreath_candle_lit_1", "y": 180 },
+		"facing=south,lit_count=1": { "model": "manyideas_christmas:block/christmas/wreaths/candle/wreath_candle_lit_1", "y": 270 },
+		"facing=west,lit_count=1":  { "model": "manyideas_christmas:block/christmas/wreaths/candle/wreath_candle_lit_1" },
+		"facing=north,lit_count=2": { "model": "manyideas_christmas:block/christmas/wreaths/candle/wreath_candle_lit_2", "y": 90 },
+		"facing=east,lit_count=2":  { "model": "manyideas_christmas:block/christmas/wreaths/candle/wreath_candle_lit_2", "y": 180 },
+		"facing=south,lit_count=2": { "model": "manyideas_christmas:block/christmas/wreaths/candle/wreath_candle_lit_2", "y": 270 },
+		"facing=west,lit_count=2":  { "model": "manyideas_christmas:block/christmas/wreaths/candle/wreath_candle_lit_2" },
+		"facing=north,lit_count=3": { "model": "manyideas_christmas:block/christmas/wreaths/candle/wreath_candle_lit_3", "y": 90 },
+		"facing=east,lit_count=3":  { "model": "manyideas_christmas:block/christmas/wreaths/candle/wreath_candle_lit_3", "y": 180 },
+		"facing=south,lit_count=3": { "model": "manyideas_christmas:block/christmas/wreaths/candle/wreath_candle_lit_3", "y": 270 },
+		"facing=west,lit_count=3":  { "model": "manyideas_christmas:block/christmas/wreaths/candle/wreath_candle_lit_3" },
+		"facing=north,lit_count=4": { "model": "manyideas_christmas:block/christmas/wreaths/candle/wreath_candle_lit_4", "y": 90 },
+		"facing=east,lit_count=4":  { "model": "manyideas_christmas:block/christmas/wreaths/candle/wreath_candle_lit_4", "y": 180 },
+		"facing=south,lit_count=4": { "model": "manyideas_christmas:block/christmas/wreaths/candle/wreath_candle_lit_4", "y": 270 },
+		"facing=west,lit_count=4":  { "model": "manyideas_christmas:block/christmas/wreaths/candle/wreath_candle_lit_4" }
+	}
+}

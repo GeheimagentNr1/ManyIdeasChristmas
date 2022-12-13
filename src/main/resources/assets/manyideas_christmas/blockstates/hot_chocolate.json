@@ -1,0 +1,8 @@
+{
+	"variants": {
+		"facing=north": { "model": "manyideas_christmas:block/christmas/hot_chocolate/hot_chocolate", "y": 90 },
+		"facing=east":  { "model": "manyideas_christmas:block/christmas/hot_chocolate/hot_chocolate", "y": 180 },
+		"facing=south": { "model": "manyideas_christmas:block/christmas/hot_chocolate/hot_chocolate", "y": 270 },
+		"facing=west":  { "model": "manyideas_christmas:block/christmas/hot_chocolate/hot_chocolate" }
+	}
+}

@@ -1,0 +1,6 @@
+{
+	"parent":   "manyideas_christmas:block/christmas/templates/wreaths/wreath/wreath_decorated",
+	"textures": {
+		"decoration": "manyideas_christmas:block/christmas/decorations/yellow_decoration"
+	}
+}

@@ -1,0 +1,6 @@
+{
+	"parent":   "manyideas_christmas:block/christmas/templates/garlands/garland_decorated_outer_corner",
+	"textures": {
+		"decoration": "manyideas_christmas:block/christmas/decorations/yellow_decoration"
+	}
+}

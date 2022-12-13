@@ -1,0 +1,28 @@
+{
+	"variants": {
+		"facing=north,y=0,z=0": { "model": "manyideas_christmas:block/christmas/fireplaces/birch/fireplace_birch_bottom_left", "y": 180 },
+		"facing=north,y=0,z=1": { "model": "manyideas_christmas:block/christmas/templates/fireplaces/fireplace_bottom_middle", "y": 180 },
+		"facing=north,y=0,z=2": { "model": "manyideas_christmas:block/christmas/fireplaces/birch/fireplace_birch_bottom_right", "y": 180 },
+		"facing=north,y=1,z=0": { "model": "manyideas_christmas:block/christmas/fireplaces/birch/fireplace_birch_top_left", "y": 180 },
+		"facing=north,y=1,z=1": { "model": "manyideas_christmas:block/christmas/fireplaces/birch/fireplace_birch_top_middle", "y": 180 },
+		"facing=north,y=1,z=2": { "model": "manyideas_christmas:block/christmas/fireplaces/birch/fireplace_birch_top_right", "y": 180 },
+		"facing=east,y=0,z=0":  { "model": "manyideas_christmas:block/christmas/fireplaces/birch/fireplace_birch_bottom_left", "y": 270 },
+		"facing=east,y=0,z=1":  { "model": "manyideas_christmas:block/christmas/templates/fireplaces/fireplace_bottom_middle", "y": 270 },
+		"facing=east,y=0,z=2":  { "model": "manyideas_christmas:block/christmas/fireplaces/birch/fireplace_birch_bottom_right", "y": 270 },
+		"facing=east,y=1,z=0":  { "model": "manyideas_christmas:block/christmas/fireplaces/birch/fireplace_birch_top_left", "y": 270 },
+		"facing=east,y=1,z=1":  { "model": "manyideas_christmas:block/christmas/fireplaces/birch/fireplace_birch_top_middle", "y": 270 },
+		"facing=east,y=1,z=2":  { "model": "manyideas_christmas:block/christmas/fireplaces/birch/fireplace_birch_top_right", "y": 270 },
+		"facing=south,y=0,z=0": { "model": "manyideas_christmas:block/christmas/fireplaces/birch/fireplace_birch_bottom_left" },
+		"facing=south,y=0,z=1": { "model": "manyideas_christmas:block/christmas/templates/fireplaces/fireplace_bottom_middle" },
+		"facing=south,y=0,z=2": { "model": "manyideas_christmas:block/christmas/fireplaces/birch/fireplace_birch_bottom_right" },
+		"facing=south,y=1,z=0": { "model": "manyideas_christmas:block/christmas/fireplaces/birch/fireplace_birch_top_left" },
+		"facing=south,y=1,z=1": { "model": "manyideas_christmas:block/christmas/fireplaces/birch/fireplace_birch_top_middle" },
+		"facing=south,y=1,z=2": { "model": "manyideas_christmas:block/christmas/fireplaces/birch/fireplace_birch_top_right" },
+		"facing=west,y=0,z=0":  { "model": "manyideas_christmas:block/christmas/fireplaces/birch/fireplace_birch_bottom_left", "y": 90 },
+		"facing=west,y=0,z=1":  { "model": "manyideas_christmas:block/christmas/templates/fireplaces/fireplace_bottom_middle", "y": 90 },
+		"facing=west,y=0,z=2":  { "model": "manyideas_christmas:block/christmas/fireplaces/birch/fireplace_birch_bottom_right", "y": 90 },
+		"facing=west,y=1,z=0":  { "model": "manyideas_christmas:block/christmas/fireplaces/birch/fireplace_birch_top_left", "y": 90 },
+		"facing=west,y=1,z=1":  { "model": "manyideas_christmas:block/christmas/fireplaces/birch/fireplace_birch_top_middle", "y": 90 },
+		"facing=west,y=1,z=2":  { "model": "manyideas_christmas:block/christmas/fireplaces/birch/fireplace_birch_top_right", "y": 90 }
+	}
+}

@@ -1,0 +1,22 @@
+{
+	"type":    "minecraft:crafting_shaped",
+	"pattern": [
+		"G G",
+		"PCP",
+		"G G"
+	],
+	"key":     {
+		"G": {
+			"item": "manyideas_core:plate_gold"
+		},
+		"P": {
+			"item": "minecraft:yellow_stained_glass_pane"
+		},
+		"C": {
+			"item": "minecraft:candle"
+		}
+	},
+	"result":  {
+		"item": "manyideas_christmas:golden_star"
+	}
+}

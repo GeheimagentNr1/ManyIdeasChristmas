@@ -1,0 +1,120 @@
+{
+	"textures": {
+		"0":        "block/bricks",
+		"particle": "block/bricks"
+	},
+	"elements": [
+		{
+			"from":     [ 1, 0, 8 ],
+			"to":       [ 10, 16, 16 ],
+			"rotation": { "angle": 0, "axis": "y", "origin": [ 16, 0, 0 ] },
+			"faces":    {
+				"north": { "uv": [ 7, 0, 16, 16 ], "texture": "#0" },
+				"east":  { "uv": [ 8, 0, 0, 16 ], "texture": "#0" },
+				"south": { "uv": [ 0, 0, 9, 16 ], "texture": "#0", "cullface": "south" },
+				"west":  { "uv": [ 16, 0, 8, 16 ], "texture": "#0" },
+				"down":  { "uv": [ 7, 8, 16, 16 ], "rotation": 180, "texture": "#0", "cullface": "down" }
+			}
+		},
+		{
+			"from":     [ 9, 3, 9 ],
+			"to":       [ 9, 16, 18 ],
+			"rotation": { "angle": 45, "axis": "y", "origin": [ 8, 0, 8 ] },
+			"faces":    {
+				"east": { "uv": [ 1, 0, 10, 14 ], "texture": "#0" }
+			}
+		},
+		{
+			"name":  "base",
+			"from":  [ 10, 0, 8 ],
+			"to":    [ 16, 3, 14 ],
+			"faces": {
+				"north": { "uv": [ 8, 7, 11, 13 ], "rotation": 270, "texture": "#0" },
+				"up":    { "uv": [ 0, 7, 6, 13 ], "rotation": 90, "texture": "#0" },
+				"down":  { "uv": [ 0, 8, 6, 14 ], "rotation": 180, "texture": "#0", "cullface": "down" }
+			}
+		},
+		{
+			"from":     [ 10, 0, 14 ],
+			"to":       [ 16, 16, 16 ],
+			"rotation": { "angle": 0, "axis": "y", "origin": [ 16, 0, 0 ] },
+			"faces":    {
+				"north": { "uv": [ 0, 0, 6, 16 ], "texture": "#0" },
+				"east":  { "uv": [ 0, 0, 2, 16 ], "texture": "#0", "cullface": "east" },
+				"south": { "uv": [ 10, 0, 16, 16 ], "texture": "#0", "cullface": "south" },
+				"down":  { "uv": [ 0, 14, 6, 16 ], "rotation": 180, "texture": "#0", "cullface": "down" }
+			}
+		},
+		{
+			"from":     [ 2, 2, 5 ],
+			"to":       [ 9, 3, 8 ],
+			"rotation": { "angle": 0, "axis": "y", "origin": [ 16, 0, 0 ] },
+			"faces":    {
+				"north": { "uv": [ 11, 12, 4, 13 ], "texture": "#wood" },
+				"east":  { "uv": [ 14, 12, 11, 13 ], "texture": "#wood" },
+				"west":  { "uv": [ 4, 12, 1, 13 ], "texture": "#wood" },
+				"up":    { "uv": [ 11, 9, 4, 12 ], "texture": "#wood" }
+			}
+		},
+		{
+			"from":     [ 1, 0, 4 ],
+			"to":       [ 10, 2, 8 ],
+			"rotation": { "angle": 0, "axis": "y", "origin": [ 16, 0, 0 ] },
+			"faces":    {
+				"north": { "uv": [ 12, 13, 4, 15 ], "texture": "#wood" },
+				"east":  { "uv": [ 15, 13, 12, 15 ], "texture": "#wood" },
+				"west":  { "uv": [ 4, 13, 1, 15 ], "texture": "#wood" },
+				"up":    { "uv": [ 12, 10, 4, 13 ], "texture": "#wood" },
+				"down":  { "uv": [ 4, 10, 12, 13 ], "texture": "#wood", "cullface": "down" }
+			}
+		},
+		{
+			"from":     [ 3, 3, 7 ],
+			"to":       [ 8, 16, 8 ],
+			"rotation": { "angle": 0, "axis": "y", "origin": [ 16, 0, 0 ] },
+			"faces":    {
+				"north": { "uv": [ 14, 0, 9, 13 ], "texture": "#wood" }
+			}
+		},
+		{
+			"from":     [ 8, 3, 6 ],
+			"to":       [ 9, 16, 8 ],
+			"rotation": { "angle": 0, "axis": "y", "origin": [ 16, 0, 0 ] },
+			"faces":    {
+				"north": { "uv": [ 6, 0, 5, 13 ], "texture": "#wood" },
+				"east":  { "uv": [ 8, 0, 6, 13 ], "texture": "#wood" },
+				"west":  { "uv": [ 5, 0, 3, 13 ], "texture": "#wood" }
+			}
+		},
+		{
+			"from":     [ 2, 3, 6 ],
+			"to":       [ 3, 16, 8 ],
+			"rotation": { "angle": 0, "axis": "y", "origin": [ 16, 0, 0 ] },
+			"faces":    {
+				"north": { "uv": [ 14, 0, 13, 13 ], "texture": "#wood" },
+				"east":  { "uv": [ 16, 0, 14, 13 ], "texture": "#wood" },
+				"west":  { "uv": [ 13, 0, 11, 13 ], "texture": "#wood" }
+			}
+		},
+		{
+			"from":     [ 6, 3, 6 ],
+			"to":       [ 7, 16, 7 ],
+			"rotation": { "angle": 0, "axis": "y", "origin": [ 16, 0, 0 ] },
+			"faces":    {
+				"north": { "uv": [ 10, 0, 9, 13 ], "texture": "#wood" },
+				"east":  { "uv": [ 11, 0, 10, 13 ], "texture": "#wood" },
+				"west":  { "uv": [ 9, 0, 8, 13 ], "texture": "#wood" }
+			}
+		},
+		{
+			"from":     [ 4, 3, 6 ],
+			"to":       [ 5, 16, 7 ],
+			"rotation": { "angle": 0, "axis": "y", "origin": [ 16, 0, 0 ] },
+			"faces":    {
+				"north": { "uv": [ 11, 0, 10, 13 ], "texture": "#wood" },
+				"east":  { "uv": [ 12, 0, 11, 13 ], "texture": "#wood" },
+				"west":  { "uv": [ 10, 0, 9, 13 ], "texture": "#wood" }
+			}
+		}
+	]
+}

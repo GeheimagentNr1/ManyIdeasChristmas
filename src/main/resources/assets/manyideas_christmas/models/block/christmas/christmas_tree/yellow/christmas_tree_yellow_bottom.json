@@ -1,0 +1,6 @@
+{
+	"parent":   "manyideas_christmas:block/christmas/templates/christmas_tree/christmas_tree_decorated_bottom",
+	"textures": {
+		"decoration": "manyideas_christmas:block/christmas/decorations/yellow_decoration"
+	}
+}

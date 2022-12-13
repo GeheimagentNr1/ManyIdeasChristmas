@@ -1,0 +1,88 @@
+{
+	"type":  "minecraft:block",
+	"pools": [
+		{
+			"rolls":      1,
+			"entries":    [
+				{
+					"type": "minecraft:item",
+					"name": "manyideas_christmas:garland"
+				}
+			],
+			"conditions": [
+				{
+					"condition": "minecraft:survives_explosion"
+				}
+			]
+		},
+		{
+			"rolls":      1,
+			"entries":    [
+				{
+					"type":       "minecraft:item",
+					"conditions": [
+						{
+							"condition":  "minecraft:block_state_property",
+							"block":      "manyideas_christmas:garland",
+							"properties": {
+								"decoration_type": "gold"
+							}
+						}
+					],
+					"name":       "minecraft:gold_ingot"
+				}
+			],
+			"conditions": [
+				{
+					"condition": "minecraft:survives_explosion"
+				}
+			]
+		},
+		{
+			"rolls":      1,
+			"entries":    [
+				{
+					"type":       "minecraft:item",
+					"conditions": [
+						{
+							"condition":  "minecraft:block_state_property",
+							"block":      "manyideas_christmas:garland",
+							"properties": {
+								"decoration_type": "red"
+							}
+						}
+					],
+					"name":       "minecraft:sweet_berries"
+				}
+			],
+			"conditions": [
+				{
+					"condition": "minecraft:survives_explosion"
+				}
+			]
+		},
+		{
+			"rolls":      1,
+			"entries":    [
+				{
+					"type":       "minecraft:item",
+					"conditions": [
+						{
+							"condition":  "minecraft:block_state_property",
+							"block":      "manyideas_christmas:garland",
+							"properties": {
+								"decoration_type": "yellow"
+							}
+						}
+					],
+					"name":       "minecraft:glowstone_dust"
+				}
+			],
+			"conditions": [
+				{
+					"condition": "minecraft:survives_explosion"
+				}
+			]
+		}
+	]
+}

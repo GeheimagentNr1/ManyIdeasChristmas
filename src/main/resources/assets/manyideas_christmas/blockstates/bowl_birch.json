@@ -1,0 +1,16 @@
+{
+	"variants": {
+		"facing=north,bowl_content=empty":   { "model": "manyideas_christmas:block/christmas/bowls/birch/bowl_birch_empty", "y": 90 },
+		"facing=east,bowl_content=empty":    { "model": "manyideas_christmas:block/christmas/bowls/birch/bowl_birch_empty", "y": 180 },
+		"facing=south,bowl_content=empty":   { "model": "manyideas_christmas:block/christmas/bowls/birch/bowl_birch_empty", "y": 270 },
+		"facing=west,bowl_content=empty":    { "model": "manyideas_christmas:block/christmas/bowls/birch/bowl_birch_empty" },
+		"facing=north,bowl_content=apples":  { "model": "manyideas_christmas:block/christmas/bowls/birch/bowl_birch_apples", "y": 90 },
+		"facing=east,bowl_content=apples":   { "model": "manyideas_christmas:block/christmas/bowls/birch/bowl_birch_apples", "y": 180 },
+		"facing=south,bowl_content=apples":  { "model": "manyideas_christmas:block/christmas/bowls/birch/bowl_birch_apples", "y": 270 },
+		"facing=west,bowl_content=apples":   { "model": "manyideas_christmas:block/christmas/bowls/birch/bowl_birch_apples" },
+		"facing=north,bowl_content=cookies": { "model": "manyideas_christmas:block/christmas/bowls/birch/bowl_birch_cookies", "y": 90 },
+		"facing=east,bowl_content=cookies":  { "model": "manyideas_christmas:block/christmas/bowls/birch/bowl_birch_cookies", "y": 180 },
+		"facing=south,bowl_content=cookies": { "model": "manyideas_christmas:block/christmas/bowls/birch/bowl_birch_cookies", "y": 270 },
+		"facing=west,bowl_content=cookies":  { "model": "manyideas_christmas:block/christmas/bowls/birch/bowl_birch_cookies" }
+	}
+}

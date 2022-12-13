@@ -1,0 +1,23 @@
+{
+	"type":        "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "minecraft:sugar"
+		},
+		{
+			"item": "minecraft:cocoa_beans"
+		},
+		{
+			"type": "forge:nbt",
+			"item": "minecraft:potion",
+			"nbt":  "{Potion:\"minecraft:water\"}"
+		},
+		{
+			"item": "manyideas_core:rainbow_stained_glass_block"
+		}
+	],
+	"result":      {
+		"item":  "manyideas_christmas:hot_chocolate",
+		"count": 2
+	}
+}
