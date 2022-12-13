@@ -58,6 +58,6 @@ description='''
 [[dependencies.manyideas_christmas]]
     modId="manyideas_core"
     mandatory=true
-    versionRange="[1.3.0,)"
+    versionRange="[1.4.0,)"
     ordering="NONE"
     side="BOTH"
