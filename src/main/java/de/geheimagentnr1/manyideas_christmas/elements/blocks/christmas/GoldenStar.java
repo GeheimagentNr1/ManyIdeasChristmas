@@ -89,7 +89,7 @@ public class GoldenStar extends LanternBlock implements BlockItemInterface, Bloc
 		return createBlockItem( this, properties, registry_name );
 	}
 	
-	public BlockState getStateForPlacement( BlockPlaceContext context ) {
+	public BlockState getStateForPlacement( @NotNull BlockPlaceContext context ) {
 		
 		return Optional.ofNullable( super.getStateForPlacement( context ) )
 			.map( state -> state.setValue(
@@ -109,7 +109,7 @@ public class GoldenStar extends LanternBlock implements BlockItemInterface, Bloc
 		FlameHelper.animateFlames( new Vec3( 8, 12, 8 ), level, pos, randomSource, 0 );
 	}
 	
-	protected void createBlockStateDefinition( StateDefinition.Builder<Block, BlockState> builder ) {
+	protected void createBlockStateDefinition( @NotNull StateDefinition.Builder<Block, BlockState> builder ) {
 		
 		super.createBlockStateDefinition( builder );
 		builder.add( BlockStateProperties.HORIZONTAL_FACING );

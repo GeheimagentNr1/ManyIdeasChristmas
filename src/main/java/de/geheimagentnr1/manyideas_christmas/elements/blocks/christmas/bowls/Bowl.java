@@ -41,7 +41,7 @@ public abstract class Bowl extends Block implements BlockItemInterface, BlockRen
 	
 	private static final int COOKIE_COUNT = 4;
 	
-	private static VoxelShape EMPTY_SHAPE = VoxelShapeMemory.createVoxelShape(
+	private static final VoxelShape EMPTY_SHAPE = VoxelShapeMemory.createVoxelShape(
 		VoxelShapeVector.create( 6, 0, 6, 10, 0.5, 10 ),
 		VoxelShapeVector.create( 5, 0.5, 5, 11, 1, 11 ),
 		VoxelShapeVector.create( 4, 1, 4, 12, 1.5, 12 ),
@@ -49,7 +49,7 @@ public abstract class Bowl extends Block implements BlockItemInterface, BlockRen
 		VoxelShapeVector.create( 2, 2, 2, 14, 3, 14 )
 	);
 	
-	private static VoxelShape APPLES_SHAPE = VoxelShapeMemory.createVoxelShape(
+	private static final VoxelShape APPLES_SHAPE = VoxelShapeMemory.createVoxelShape(
 		VoxelShapeVector.create( 6, 0, 6, 10, 0.5, 10 ),
 		VoxelShapeVector.create( 5, 0.5, 5, 11, 1, 11 ),
 		VoxelShapeVector.create( 4, 1, 4, 12, 1.5, 12 ),
@@ -58,7 +58,7 @@ public abstract class Bowl extends Block implements BlockItemInterface, BlockRen
 		VoxelShapeVector.create( 3, 3, 3, 13, 5.5, 13 )
 	);
 	
-	private static VoxelShapeMemory COOKIES_SHAPES = VoxelShapeMemory.createHorizontalVoxelShapes(
+	private static final VoxelShapeMemory COOKIES_SHAPES = VoxelShapeMemory.createHorizontalVoxelShapes(
 		Direction.WEST,
 		VoxelShapeVector.create( 6, 0, 6, 10, 0.5, 10 ),
 		VoxelShapeVector.create( 5, 0.5, 5, 11, 1, 11 ),
