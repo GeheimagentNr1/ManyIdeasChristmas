@@ -4,7 +4,7 @@ plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
     id("com.jaredsburrows.license") version "0.9.0"
     id "net.linguica.maven-settings" version "0.5"
-    id 'io.github.CDAGaming.cursegradle' version '1.6.0'
+    id 'io.github.CDAGaming.cursegradle' version '1.6.1'
     id "com.modrinth.minotaur" version "2.+"
 }
 
@@ -249,5 +249,8 @@ modrinth {
     versionName = "${mod_display_name} ${mc_version}-${version}"
     changelog = rootProject.file("CHANGELOG.md").text
     uploadFile = jar
+    dependencies {
+        required.project 'manyideas-core'
+    }
     debugMode = Boolean.parseBoolean("${uploadDebug}")
 }
