@@ -27,7 +27,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -99,7 +99,8 @@ public class WreathCandle extends Block implements BlockItemInterface, BlockRend
 	public WreathCandle() {
 		
 		super(
-			BlockBehaviour.Properties.of( Material.LEAVES )
+			BlockBehaviour.Properties.of()
+				.mapColor( MapColor.PLANT )
 				.strength( 2.0F )
 				.sound( SoundType.GRASS )
 				.lightLevel( value -> value.getValue( ModBlockStateProperties.WREATH_CANDLE_LIT_COUNT ) * 3 )

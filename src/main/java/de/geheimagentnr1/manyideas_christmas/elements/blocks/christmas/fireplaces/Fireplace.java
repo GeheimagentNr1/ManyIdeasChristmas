@@ -9,10 +9,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -175,10 +174,10 @@ public abstract class Fireplace extends MultiBlock implements BlockRenderTypeInt
 		VoxelShapeVector.create( 15, 3, 13.5, 15.5, 16, 14 )
 	);
 	
-	Fireplace() {
+	Fireplace( BlockBehaviour.Properties _properties ) {
 		
 		super(
-			Properties.of( Material.STONE, MaterialColor.COLOR_RED )
+			_properties
 				.requiresCorrectToolForDrops()
 				.noOcclusion()
 				.strength( 2.0F, 6.0F )

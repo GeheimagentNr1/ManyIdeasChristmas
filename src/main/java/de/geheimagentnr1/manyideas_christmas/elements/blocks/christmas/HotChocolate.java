@@ -15,7 +15,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
@@ -33,7 +33,8 @@ public class HotChocolate extends Block implements BlockItemInterface, BlockRend
 	public HotChocolate() {
 		
 		super(
-			BlockBehaviour.Properties.of( Material.STONE )
+			BlockBehaviour.Properties.of()
+				.mapColor( MapColor.QUARTZ )
 				.strength( 0.5F )
 				.sound( SoundType.STONE )
 				.noOcclusion()

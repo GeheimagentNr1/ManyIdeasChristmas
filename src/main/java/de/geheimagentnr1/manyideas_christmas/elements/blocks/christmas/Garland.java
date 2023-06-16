@@ -20,10 +20,11 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -57,7 +58,8 @@ public class Garland extends Block implements BlockItemInterface, BlockRenderTyp
 	public Garland() {
 		
 		super(
-			Properties.of( Material.LEAVES )
+			BlockBehaviour.Properties.of()
+				.mapColor( MapColor.PLANT )
 				.strength( 2.0F )
 				.sound( SoundType.GRASS )
 				.noOcclusion()

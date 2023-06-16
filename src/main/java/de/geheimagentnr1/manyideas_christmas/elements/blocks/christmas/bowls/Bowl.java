@@ -24,10 +24,10 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -68,10 +68,10 @@ public abstract class Bowl extends Block implements BlockItemInterface, BlockRen
 		VoxelShapeVector.create( 4.5, 3, 3.5, 12, 3.5, 11.5 )
 	);
 	
-	Bowl() {
+	Bowl( BlockBehaviour.Properties _properties ) {
 		
 		super(
-			Properties.of( Material.WOOD )
+			_properties
 				.strength( 3.5F )
 				.sound( SoundType.WOOD )
 				.noOcclusion()

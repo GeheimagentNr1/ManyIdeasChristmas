@@ -22,7 +22,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -108,7 +108,8 @@ public class Present extends Block implements BlockItemInterface, BlockRenderTyp
 	public Present() {
 		
 		super(
-			BlockBehaviour.Properties.of( Material.LEAVES )
+			BlockBehaviour.Properties.of()
+				.mapColor( MapColor.SNOW )
 				.strength( 0.5F )
 				.sound( SoundType.GRASS )
 				.noOcclusion()

@@ -19,7 +19,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -44,7 +44,8 @@ public class PlushiCat extends EveryDirectionBlock implements BlockItemInterface
 	public PlushiCat() {
 		
 		super(
-			Properties.of( Material.CLOTH_DECORATION )
+			Properties.of()
+				.mapColor( MapColor.COLOR_BROWN )
 				.strength( 0.1F )
 				.sound( SoundType.WOOL )
 				.noOcclusion()
