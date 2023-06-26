@@ -1,4 +1,5 @@
 {
+	"render_type": "minecraft:translucent",
 	"textures": {
 		"0":        "block/white_stained_glass",
 		"1":        "block/brown_concrete_powder",

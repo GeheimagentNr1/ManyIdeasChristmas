@@ -1,4 +1,5 @@
 {
+	"render_type": "minecraft:cutout",
 	"ambientocclusion": false,
 	"textures":         {
 		"cat4":     "manyideas_christmas:block/christmas/plushi_cat/plushi_cat_4",

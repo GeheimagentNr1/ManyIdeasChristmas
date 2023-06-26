@@ -1,42 +1,42 @@
 package de.geheimagentnr1.manyideas_christmas.elements.creative_mod_tabs;
 
 import de.geheimagentnr1.manyideas_christmas.ManyIdeasChristmas;
-import de.geheimagentnr1.manyideas_christmas.elements.blocks.ModBlocks;
-import de.geheimagentnr1.manyideas_core.elements.blocks.BlockItemInterface;
-import de.geheimagentnr1.manyideas_core.elements.creative_mod_tabs.CreativeModeTabFactory;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
+import de.geheimagentnr1.manyideas_christmas.elements.blocks.ModBlocksRegisterFactory;
+import de.geheimagentnr1.minecraft_forge_api.elements.creative_mod_tabs.CreativeModeTabFactory;
+import de.geheimagentnr1.minecraft_forge_api.registry.RegistryEntry;
+import lombok.RequiredArgsConstructor;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 
+@RequiredArgsConstructor
 public class ManyIdeasChristmasCreativeModeTabFactory implements CreativeModeTabFactory {
 	
 	
-	@Override
-	public String getModId() {
-		
-		return ManyIdeasChristmas.MODID;
-	}
+	@NotNull
+	private final ModBlocksRegisterFactory modBlocksRegisterFactory;
 	
+	@NotNull
 	@Override
 	public String getRegistryName() {
 		
 		return ManyIdeasChristmas.MODID;
 	}
 	
+	@NotNull
 	@Override
-	public Item getDisplayItem() {
+	public ItemLike getIconItem() {
 		
-		return ModBlocks.GOLDEN_STAR.asItem();
+		return ModBlocksRegisterFactory.GOLDEN_STAR;
 	}
 	
+	@NotNull
 	@Override
-	public List<ItemStack> getDisplayItems() {
+	public List<RegistryEntry<Block>> getDisplayBlocks() {
 		
-		return ModBlocks.BLOCKS.stream()
-			.filter( registryEntry -> registryEntry.getValue() instanceof BlockItemInterface )
-			.map( registryEntry -> new ItemStack( registryEntry.getValue() ) )
-			.toList();
+		return modBlocksRegisterFactory.getBlocks();
 	}
 }

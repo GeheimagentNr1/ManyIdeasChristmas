@@ -2,17 +2,14 @@ package de.geheimagentnr1.manyideas_christmas.elements.blocks.christmas.wreaths;
 
 import de.geheimagentnr1.manyideas_christmas.elements.block_state_properties.ModBlockStateProperties;
 import de.geheimagentnr1.manyideas_christmas.helpers.DecorateableBlockHelper;
-import de.geheimagentnr1.manyideas_core.elements.blocks.BlockItemInterface;
-import de.geheimagentnr1.manyideas_core.elements.blocks.BlockRenderTypeInterface;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeMemory;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeVector;
-import net.minecraft.client.renderer.RenderType;
+import de.geheimagentnr1.minecraft_forge_api.elements.blocks.BlockItemInterface;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -27,13 +24,16 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 
-public class Wreath extends Block implements BlockItemInterface, BlockRenderTypeInterface {
+public class Wreath extends Block implements BlockItemInterface {
 	
 	
+	@NotNull
 	public static final String registry_name = "wreath";
 	
+	@NotNull
 	private static final VoxelShapeMemory SHAPES = VoxelShapeMemory.createVoxelShapes(
 		Direction.SOUTH,
 		VoxelShapeVector.create( 2, 2, 13.5, 14, 14, 16 )
@@ -61,7 +61,9 @@ public class Wreath extends Block implements BlockItemInterface, BlockRenderType
 		return SHAPES.getShapeFromFacing( state.getValue( BlockStateProperties.FACING ) );
 	}
 	
-	public BlockState getStateForPlacement( BlockPlaceContext context ) {
+	@Nullable
+	@Override
+	public BlockState getStateForPlacement( @NotNull BlockPlaceContext context ) {
 		
 		return defaultBlockState().setValue(
 			BlockStateProperties.FACING,
@@ -85,17 +87,5 @@ public class Wreath extends Block implements BlockItemInterface, BlockRenderType
 	protected void createBlockStateDefinition( StateDefinition.Builder<Block, BlockState> builder ) {
 		
 		builder.add( BlockStateProperties.FACING, ModBlockStateProperties.DECORATION_TYPE );
-	}
-	
-	@Override
-	public Item getBlockItem( Item.Properties _properties ) {
-		
-		return createBlockItem( this, _properties, registry_name );
-	}
-	
-	@Override
-	public RenderType getRenderType() {
-		
-		return RenderType.cutout();
 	}
 }

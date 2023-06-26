@@ -1,21 +1,11 @@
 package de.geheimagentnr1.manyideas_christmas.elements.block_state_properties;
 
-import net.minecraft.util.StringRepresentable;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Locale;
+import de.geheimagentnr1.minecraft_forge_api.util.SimpleStringRepresentable;
 
 
-public enum DecorationType implements StringRepresentable {
+public enum DecorationType implements SimpleStringRepresentable {
 	NONE,
 	GOLD,
 	RED,
-	YELLOW;
-	
-	@NotNull
-	@Override
-	public String getSerializedName() {
-		
-		return name().toLowerCase( Locale.ENGLISH );
-	}
+	YELLOW
 }

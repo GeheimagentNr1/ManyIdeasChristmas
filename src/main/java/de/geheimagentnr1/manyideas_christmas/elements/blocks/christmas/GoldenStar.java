@@ -1,15 +1,12 @@
 package de.geheimagentnr1.manyideas_christmas.elements.blocks.christmas;
 
 import de.geheimagentnr1.manyideas_christmas.helpers.FlameHelper;
-import de.geheimagentnr1.manyideas_core.elements.blocks.BlockItemInterface;
-import de.geheimagentnr1.manyideas_core.elements.blocks.BlockRenderTypeInterface;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeMemory;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeVector;
-import net.minecraft.client.renderer.RenderType;
+import de.geheimagentnr1.minecraft_forge_api.elements.blocks.BlockItemInterface;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -25,15 +22,18 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
 
-public class GoldenStar extends LanternBlock implements BlockItemInterface, BlockRenderTypeInterface {
+public class GoldenStar extends LanternBlock implements BlockItemInterface {
 	
 	
+	@NotNull
 	public static final String registry_name = "golden_star";
 	
+	@NotNull
 	private static final VoxelShapeMemory HANGING_SHAPES = VoxelShapeMemory.createHorizontalAxisVoxelShapes(
 		Direction.NORTH,
 		VoxelShapeVector.create( 3, 4, 4, 13, 12, 12 ),
@@ -43,6 +43,7 @@ public class GoldenStar extends LanternBlock implements BlockItemInterface, Bloc
 		VoxelShapeVector.create( 6.5, 14.5, 6.5, 9.5, 16, 9.5 )
 	);
 	
+	@NotNull
 	private static final VoxelShapeMemory STANDING_SHAPES = VoxelShapeMemory.createHorizontalAxisVoxelShapes(
 		Direction.NORTH,
 		VoxelShapeVector.create( 3, 4, 4, 13, 12, 12 ),
@@ -83,12 +84,8 @@ public class GoldenStar extends LanternBlock implements BlockItemInterface, Bloc
 		}
 	}
 	
+	@Nullable
 	@Override
-	public Item getBlockItem( Item.Properties properties ) {
-		
-		return createBlockItem( this, properties, registry_name );
-	}
-	
 	public BlockState getStateForPlacement( @NotNull BlockPlaceContext context ) {
 		
 		return Optional.ofNullable( super.getStateForPlacement( context ) )
@@ -113,11 +110,5 @@ public class GoldenStar extends LanternBlock implements BlockItemInterface, Bloc
 		
 		super.createBlockStateDefinition( builder );
 		builder.add( BlockStateProperties.HORIZONTAL_FACING );
-	}
-	
-	@Override
-	public RenderType getRenderType() {
-		
-		return RenderType.translucent();
 	}
 }

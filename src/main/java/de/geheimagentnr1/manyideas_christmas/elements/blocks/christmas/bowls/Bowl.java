@@ -3,12 +3,10 @@ package de.geheimagentnr1.manyideas_christmas.elements.blocks.christmas.bowls;
 import de.geheimagentnr1.manyideas_christmas.ManyIdeasChristmas;
 import de.geheimagentnr1.manyideas_christmas.elements.block_state_properties.BowlContent;
 import de.geheimagentnr1.manyideas_christmas.elements.block_state_properties.ModBlockStateProperties;
-import de.geheimagentnr1.manyideas_core.elements.blocks.BlockItemInterface;
-import de.geheimagentnr1.manyideas_core.elements.blocks.BlockRenderTypeInterface;
-import de.geheimagentnr1.manyideas_core.util.TranslationKeyHelper;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeMemory;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeVector;
-import net.minecraft.client.renderer.RenderType;
+import de.geheimagentnr1.minecraft_forge_api.elements.blocks.BlockItemInterface;
+import de.geheimagentnr1.minecraft_forge_api.util.TranslationKeyHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -32,15 +30,19 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 
-public abstract class Bowl extends Block implements BlockItemInterface, BlockRenderTypeInterface {
+public abstract class Bowl extends Block implements BlockItemInterface {
 	
 	
+	@NotNull
 	private static final int APPLE_COUNT = 7;
 	
+	@NotNull
 	private static final int COOKIE_COUNT = 4;
 	
+	@NotNull
 	private static final VoxelShape EMPTY_SHAPE = VoxelShapeMemory.createVoxelShape(
 		VoxelShapeVector.create( 6, 0, 6, 10, 0.5, 10 ),
 		VoxelShapeVector.create( 5, 0.5, 5, 11, 1, 11 ),
@@ -49,6 +51,7 @@ public abstract class Bowl extends Block implements BlockItemInterface, BlockRen
 		VoxelShapeVector.create( 2, 2, 2, 14, 3, 14 )
 	);
 	
+	@NotNull
 	private static final VoxelShape APPLES_SHAPE = VoxelShapeMemory.createVoxelShape(
 		VoxelShapeVector.create( 6, 0, 6, 10, 0.5, 10 ),
 		VoxelShapeVector.create( 5, 0.5, 5, 11, 1, 11 ),
@@ -58,6 +61,7 @@ public abstract class Bowl extends Block implements BlockItemInterface, BlockRen
 		VoxelShapeVector.create( 3, 3, 3, 13, 5.5, 13 )
 	);
 	
+	@NotNull
 	private static final VoxelShapeMemory COOKIES_SHAPES = VoxelShapeMemory.createHorizontalVoxelShapes(
 		Direction.WEST,
 		VoxelShapeVector.create( 6, 0, 6, 10, 0.5, 10 ),
@@ -68,7 +72,7 @@ public abstract class Bowl extends Block implements BlockItemInterface, BlockRen
 		VoxelShapeVector.create( 4.5, 3, 3.5, 12, 3.5, 11.5 )
 	);
 	
-	Bowl( BlockBehaviour.Properties _properties ) {
+	Bowl( @NotNull BlockBehaviour.Properties _properties ) {
 		
 		super(
 			_properties
@@ -95,7 +99,9 @@ public abstract class Bowl extends Block implements BlockItemInterface, BlockRen
 	}
 	
 	
-	public BlockState getStateForPlacement( BlockPlaceContext context ) {
+	@Nullable
+	@Override
+	public BlockState getStateForPlacement( @NotNull BlockPlaceContext context ) {
 		
 		return defaultBlockState().setValue(
 			BlockStateProperties.HORIZONTAL_FACING,
@@ -194,14 +200,8 @@ public abstract class Bowl extends Block implements BlockItemInterface, BlockRen
 		return InteractionResult.PASS;
 	}
 	
-	protected void createBlockStateDefinition( StateDefinition.Builder<Block, BlockState> builder ) {
+	protected void createBlockStateDefinition( @NotNull StateDefinition.Builder<Block, BlockState> builder ) {
 		
 		builder.add( BlockStateProperties.HORIZONTAL_FACING, ModBlockStateProperties.BOWL_CONTENT );
-	}
-	
-	@Override
-	public RenderType getRenderType() {
-		
-		return RenderType.cutout();
 	}
 }

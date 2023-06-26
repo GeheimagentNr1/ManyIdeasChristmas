@@ -2,19 +2,16 @@ package de.geheimagentnr1.manyideas_christmas.elements.blocks.christmas;
 
 import de.geheimagentnr1.manyideas_core.elements.block_state_properties.EveryDirectionFacing;
 import de.geheimagentnr1.manyideas_core.elements.block_state_properties.ModBlockStateProperties;
-import de.geheimagentnr1.manyideas_core.elements.blocks.BlockItemInterface;
-import de.geheimagentnr1.manyideas_core.elements.blocks.BlockRenderTypeInterface;
 import de.geheimagentnr1.manyideas_core.elements.blocks.template_blocks.EveryDirectionBlock;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.EveryDirectionFacingVoxelShapeMemory;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeVector;
-import net.minecraft.client.renderer.RenderType;
+import de.geheimagentnr1.minecraft_forge_api.elements.blocks.BlockItemInterface;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.SoundType;
@@ -26,11 +23,14 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 
-public class PlushiCat extends EveryDirectionBlock implements BlockItemInterface, BlockRenderTypeInterface {
+public class PlushiCat extends EveryDirectionBlock implements BlockItemInterface {
 	
+	
+	@NotNull
 	
 	public static final String registry_name = "plushi_cat";
 	
+	@NotNull
 	private static final EveryDirectionFacingVoxelShapeMemory SHAPES =
 		EveryDirectionFacingVoxelShapeMemory.createEveryDirectionVoxelShapes(
 			EveryDirectionFacing.DOWN_SOUTH,
@@ -75,17 +75,5 @@ public class PlushiCat extends EveryDirectionBlock implements BlockItemInterface
 		
 		level.playSound( player, pos, SoundEvents.CAT_PURR, SoundSource.NEUTRAL, 1.0F, 1.0F );
 		return InteractionResult.SUCCESS;
-	}
-	
-	@Override
-	public Item getBlockItem( Item.Properties _properties ) {
-		
-		return createBlockItem( this, _properties, registry_name );
-	}
-	
-	@Override
-	public RenderType getRenderType() {
-		
-		return RenderType.cutout();
 	}
 }

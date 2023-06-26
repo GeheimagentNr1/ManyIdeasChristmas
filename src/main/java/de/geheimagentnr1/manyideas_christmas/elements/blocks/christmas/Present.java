@@ -1,17 +1,14 @@
 package de.geheimagentnr1.manyideas_christmas.elements.blocks.christmas;
 
 import de.geheimagentnr1.manyideas_christmas.elements.block_state_properties.ModBlockStateProperties;
-import de.geheimagentnr1.manyideas_core.elements.blocks.BlockItemInterface;
-import de.geheimagentnr1.manyideas_core.elements.blocks.BlockRenderTypeInterface;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeMemory;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeVector;
-import net.minecraft.client.renderer.RenderType;
+import de.geheimagentnr1.minecraft_forge_api.elements.blocks.BlockItemInterface;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -28,15 +25,19 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 
-public class Present extends Block implements BlockItemInterface, BlockRenderTypeInterface {
+public class Present extends Block implements BlockItemInterface {
 	
 	
+	@NotNull
 	public static final String registry_name = "present";
 	
+	@NotNull
 	private static final Integer MAX_PRESENT_COUNT = 4;
 	
+	@NotNull
 	private static final VoxelShapeMemory PRESENT_1_SHAPES = VoxelShapeMemory.createHorizontalVoxelShapes(
 		Direction.WEST,
 		VoxelShapeVector.create( 1.75, 0.01, 2.25, 14.25, 4.76, 14.75 ),
@@ -46,6 +47,7 @@ public class Present extends Block implements BlockItemInterface, BlockRenderTyp
 		VoxelShapeVector.create( 7.5, 5, 6.75, 8.5, 6, 9.25 )
 	);
 	
+	@NotNull
 	private static final VoxelShapeMemory PRESENT_2_SHAPES = VoxelShapeMemory.createHorizontalVoxelShapes(
 		Direction.WEST,
 		VoxelShapeVector.create( 1.75, 0.01, 1.25, 8.25, 2.76, 13.75 ),
@@ -61,6 +63,7 @@ public class Present extends Block implements BlockItemInterface, BlockRenderTyp
 		VoxelShapeVector.create( 9.5, 10, 3, 14.5, 12, 5 )
 	);
 	
+	@NotNull
 	private static final VoxelShapeMemory PRESENT_3_SHAPES = VoxelShapeMemory.createHorizontalVoxelShapes(
 		Direction.WEST,
 		VoxelShapeVector.create( 1.25, 0.01, 1.25, 8.75, 7.76, 8.75 ),
@@ -81,6 +84,7 @@ public class Present extends Block implements BlockItemInterface, BlockRenderTyp
 		VoxelShapeVector.create( 12.5, 4, 9.75, 13.5, 5, 12.25 )
 	);
 	
+	@NotNull
 	private static final VoxelShapeMemory PRESENT_4_SHAPES = VoxelShapeMemory.createHorizontalVoxelShapes(
 		Direction.WEST,
 		VoxelShapeVector.create( 1.25, 0.01, 1.25, 5.25, 12.01, 6.25 ),
@@ -134,7 +138,9 @@ public class Present extends Block implements BlockItemInterface, BlockRenderTyp
 		};
 	}
 	
-	public BlockState getStateForPlacement( BlockPlaceContext context ) {
+	@Nullable
+	@Override
+	public BlockState getStateForPlacement( @NotNull BlockPlaceContext context ) {
 		
 		return defaultBlockState().setValue(
 			BlockStateProperties.HORIZONTAL_FACING,
@@ -171,20 +177,8 @@ public class Present extends Block implements BlockItemInterface, BlockRenderTyp
 	}
 	
 	
-	protected void createBlockStateDefinition( StateDefinition.Builder<Block, BlockState> builder ) {
+	protected void createBlockStateDefinition( @NotNull StateDefinition.Builder<Block, BlockState> builder ) {
 		
 		builder.add( BlockStateProperties.HORIZONTAL_FACING, ModBlockStateProperties.PRESENT_COUNT );
-	}
-	
-	@Override
-	public Item getBlockItem( Item.Properties _properties ) {
-		
-		return createBlockItem( this, _properties, registry_name );
-	}
-	
-	@Override
-	public RenderType getRenderType() {
-		
-		return RenderType.cutout();
 	}
 }

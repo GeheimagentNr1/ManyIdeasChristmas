@@ -1,20 +1,10 @@
 package de.geheimagentnr1.manyideas_christmas.elements.block_state_properties;
 
-import net.minecraft.util.StringRepresentable;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Locale;
+import de.geheimagentnr1.minecraft_forge_api.util.SimpleStringRepresentable;
 
 
-public enum BowlContent implements StringRepresentable {
+public enum BowlContent implements SimpleStringRepresentable {
 	EMPTY,
 	APPLES,
-	COOKIES;
-	
-	@NotNull
-	@Override
-	public String getSerializedName() {
-		
-		return name().toLowerCase( Locale.ENGLISH );
-	}
+	COOKIES
 }

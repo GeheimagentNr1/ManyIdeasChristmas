@@ -1,4 +1,5 @@
 {
+	"render_type": "minecraft:cutout",
 	"textures": {
 		"0":        "block/pink_concrete_powder",
 		"1":        "block/light_gray_concrete_powder",

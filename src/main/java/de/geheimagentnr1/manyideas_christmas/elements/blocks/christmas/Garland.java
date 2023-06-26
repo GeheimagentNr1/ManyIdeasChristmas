@@ -3,17 +3,14 @@ package de.geheimagentnr1.manyideas_christmas.elements.blocks.christmas;
 import de.geheimagentnr1.manyideas_christmas.elements.block_state_properties.Connected;
 import de.geheimagentnr1.manyideas_christmas.elements.block_state_properties.ModBlockStateProperties;
 import de.geheimagentnr1.manyideas_christmas.helpers.DecorateableBlockHelper;
-import de.geheimagentnr1.manyideas_core.elements.blocks.BlockItemInterface;
-import de.geheimagentnr1.manyideas_core.elements.blocks.BlockRenderTypeInterface;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeMemory;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeVector;
-import net.minecraft.client.renderer.RenderType;
+import de.geheimagentnr1.minecraft_forge_api.elements.blocks.BlockItemInterface;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -32,24 +29,29 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 
-public class Garland extends Block implements BlockItemInterface, BlockRenderTypeInterface {
+public class Garland extends Block implements BlockItemInterface {
 	
 	
+	@NotNull
 	public static final String registry_name = "garland";
 	
+	@NotNull
 	private static final VoxelShapeVector STRAIGHT_SHAPE = VoxelShapeVector.create( 0, 9, 0, 16, 15, 4 );
 	
+	@NotNull
 	private static final VoxelShapeMemory STRAIGHT_SHAPES = VoxelShapeMemory.createHorizontalVoxelShapes(
 		Direction.NORTH,
 		STRAIGHT_SHAPE
 	);
 	
+	@NotNull
 	private static final VoxelShapeMemory BACK_LEFT_SHAPES = VoxelShapeMemory.createHorizontalVoxelShapes(
 		Direction.NORTH,
 		STRAIGHT_SHAPE,
 		VoxelShapeVector.create( 0, 9, 4, 4, 15, 16 )
 	);
 	
+	@NotNull
 	private static final VoxelShapeMemory FRONT_LEFT_SHAPES = VoxelShapeMemory.createHorizontalVoxelShapes(
 		Direction.NORTH,
 		VoxelShapeVector.create( 0, 9, 0, 4, 15, 4 )
@@ -86,7 +88,7 @@ public class Garland extends Block implements BlockItemInterface, BlockRenderTyp
 	
 	@Nullable
 	@Override
-	public BlockState getStateForPlacement( BlockPlaceContext context ) {
+	public BlockState getStateForPlacement( @NotNull BlockPlaceContext context ) {
 		
 		return connect(
 			defaultBlockState().setValue(
@@ -111,10 +113,11 @@ public class Garland extends Block implements BlockItemInterface, BlockRenderTyp
 		return connect( state, level, pos );
 	}
 	
+	@NotNull
 	private static BlockState connect(
-		BlockState state,
-		LevelAccessor level,
-		BlockPos pos ) {
+		@NotNull BlockState state,
+		@NotNull LevelAccessor level,
+		@NotNull BlockPos pos ) {
 		
 		Direction direction = state.getValue( BlockStateProperties.HORIZONTAL_FACING );
 		BlockState directionState = level.getBlockState( pos.relative( direction ) );
@@ -153,24 +156,12 @@ public class Garland extends Block implements BlockItemInterface, BlockRenderTyp
 	}
 	
 	@Override
-	protected void createBlockStateDefinition( StateDefinition.Builder<Block, BlockState> builder ) {
+	protected void createBlockStateDefinition( @NotNull StateDefinition.Builder<Block, BlockState> builder ) {
 		
 		builder.add(
 			BlockStateProperties.HORIZONTAL_FACING,
 			ModBlockStateProperties.DECORATION_TYPE,
 			ModBlockStateProperties.CONNECTED
 		);
-	}
-	
-	@Override
-	public RenderType getRenderType() {
-		
-		return RenderType.cutout();
-	}
-	
-	@Override
-	public Item getBlockItem( Item.Properties properties ) {
-		
-		return createBlockItem( this, properties, registry_name );
 	}
 }

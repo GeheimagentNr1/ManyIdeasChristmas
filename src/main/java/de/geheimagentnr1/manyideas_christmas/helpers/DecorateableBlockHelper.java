@@ -18,6 +18,7 @@ import org.jetbrains.annotations.NotNull;
 public class DecorateableBlockHelper {
 	
 	
+	@NotNull
 	public static InteractionResult use(
 		@NotNull BlockState state,
 		@NotNull Level level,

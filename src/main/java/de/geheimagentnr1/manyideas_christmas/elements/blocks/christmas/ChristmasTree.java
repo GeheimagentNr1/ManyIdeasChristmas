@@ -2,17 +2,14 @@ package de.geheimagentnr1.manyideas_christmas.elements.blocks.christmas;
 
 import de.geheimagentnr1.manyideas_christmas.elements.block_state_properties.ModBlockStateProperties;
 import de.geheimagentnr1.manyideas_christmas.helpers.DecorateableBlockHelper;
-import de.geheimagentnr1.manyideas_core.elements.blocks.BlockRenderTypeInterface;
 import de.geheimagentnr1.manyideas_core.elements.blocks.template_blocks.multi_block.MultiBlock;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeMemory;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeVector;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -29,17 +26,20 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 
-public class ChristmasTree extends MultiBlock implements BlockRenderTypeInterface {
+public class ChristmasTree extends MultiBlock {
 	
 	
+	@NotNull
 	public static final String registry_name = "christmas_tree";
 	
+	@NotNull
 	private static final VoxelShapeMemory TOP_SHAPES = VoxelShapeMemory.createHorizontalVoxelShapes(
 		Direction.NORTH,
 		VoxelShapeVector.create( 0, 0, 0, 4.5, 2, 4.5 ),
 		VoxelShapeVector.create( 0, 2, 0, 2.5, 11, 2 )
 	);
 	
+	@NotNull
 	private static final VoxelShapeMemory MIDDLE_SHAPES = VoxelShapeMemory.createHorizontalVoxelShapes(
 		Direction.NORTH,
 		VoxelShapeVector.create( 0, 0, 0, 3, 16, 9.5 ),
@@ -47,6 +47,7 @@ public class ChristmasTree extends MultiBlock implements BlockRenderTypeInterfac
 		VoxelShapeVector.create( 3, 0, 3, 6.5, 16, 6.5 )
 	);
 	
+	@NotNull
 	private static final VoxelShapeMemory BOTTOM_SHAPES = VoxelShapeMemory.createHorizontalVoxelShapes(
 		Direction.NORTH,
 		VoxelShapeVector.create( 0, 0, 0, 1, 2, 7 ),
@@ -110,7 +111,7 @@ public class ChristmasTree extends MultiBlock implements BlockRenderTypeInterfac
 		return DecorateableBlockHelper.use( state, level, pos, player, hand );
 	}
 	
-	protected void createBlockStateDefinition( StateDefinition.Builder<Block, BlockState> builder ) {
+	protected void createBlockStateDefinition( @NotNull StateDefinition.Builder<Block, BlockState> builder ) {
 		
 		super.createBlockStateDefinition( builder );
 		builder.add( ModBlockStateProperties.DECORATION_TYPE );
@@ -149,17 +150,5 @@ public class ChristmasTree extends MultiBlock implements BlockRenderTypeInterfac
 				{ true, true }
 			}
 		};
-	}
-	
-	@Override
-	public RenderType getRenderType() {
-		
-		return RenderType.cutoutMipped();
-	}
-	
-	@Override
-	public Item getBlockItem( Item.Properties _properties ) {
-		
-		return createBlockItem( this, _properties, registry_name );
 	}
 }

@@ -1,4 +1,5 @@
 {
+	"render_type": "minecraft:cutout",
 	"textures": {
 		"2": "manyideas_christmas:block/christmas/bowls/apple_red",
 		"3": "block/brown_terracotta",

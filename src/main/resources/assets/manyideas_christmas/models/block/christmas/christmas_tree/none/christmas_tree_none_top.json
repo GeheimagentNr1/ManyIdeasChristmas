@@ -1,4 +1,5 @@
 {
+	"render_type": "minecraft:cutout_mipped",
 	"textures": {
 		"5":          "block/sweet_berry_bush_stage1",
 		"particle":   "block/sweet_berry_bush_stage1",

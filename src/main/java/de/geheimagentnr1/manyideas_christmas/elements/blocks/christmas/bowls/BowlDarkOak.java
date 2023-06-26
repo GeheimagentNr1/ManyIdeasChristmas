@@ -1,23 +1,18 @@
 package de.geheimagentnr1.manyideas_christmas.elements.blocks.christmas.bowls;
 
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
+import org.jetbrains.annotations.NotNull;
 
 
 public class BowlDarkOak extends Bowl {
 	
 	
+	@NotNull
 	public static final String registry_name = "bowl_dark_oak";
 	
 	public BowlDarkOak() {
 		
 		super( BlockBehaviour.Properties.of().mapColor( MapColor.COLOR_BROWN ) );
-	}
-	
-	@Override
-	public Item getBlockItem( Item.Properties _properties ) {
-		
-		return createBlockItem( this, _properties, registry_name );
 	}
 }

@@ -1,10 +1,8 @@
 package de.geheimagentnr1.manyideas_christmas.elements.blocks.christmas.fireplaces;
 
-import de.geheimagentnr1.manyideas_core.elements.blocks.BlockRenderTypeInterface;
 import de.geheimagentnr1.manyideas_core.elements.blocks.template_blocks.multi_block.MultiBlock;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeMemory;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeVector;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
@@ -18,9 +16,10 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 
-public abstract class Fireplace extends MultiBlock implements BlockRenderTypeInterface {
+public abstract class Fireplace extends MultiBlock {
 	
 	
+	@NotNull
 	private static final VoxelShapeMemory TOP_LEFT_SHAPES = VoxelShapeMemory.createHorizontalVoxelShapes(
 		Direction.SOUTH,
 		VoxelShapeVector.create( 0, 14, 0, 16, 16, 16 ),
@@ -59,12 +58,14 @@ public abstract class Fireplace extends MultiBlock implements BlockRenderTypeInt
 		VoxelShapeVector.create( 0.5, 0, 13.5, 1, 12, 14 )
 	);
 	
+	@NotNull
 	private static final VoxelShapeMemory TOP_MIDDLE_SHAPES = VoxelShapeMemory.createHorizontalVoxelShapes(
 		Direction.SOUTH,
 		VoxelShapeVector.create( 0, 14, 0, 16, 16, 16 ),
 		VoxelShapeVector.create( 0, 12, 3, 16, 14, 16 )
 	);
 	
+	@NotNull
 	private static final VoxelShapeMemory TOP_RIGHT_SHAPES = VoxelShapeMemory.createHorizontalVoxelShapes(
 		Direction.SOUTH,
 		VoxelShapeVector.create( 0, 14, 0, 16, 16, 16 ),
@@ -106,6 +107,7 @@ public abstract class Fireplace extends MultiBlock implements BlockRenderTypeInt
 		VoxelShapeVector.create( 15, 0, 13.5, 15.5, 12, 14 )
 	);
 	
+	@NotNull
 	private static final VoxelShapeMemory BOTTOM_LEFT_SHAPES = VoxelShapeMemory.createHorizontalVoxelShapes(
 		Direction.SOUTH,
 		VoxelShapeVector.create( 6, 0, 8, 15, 16, 16 ),
@@ -131,6 +133,7 @@ public abstract class Fireplace extends MultiBlock implements BlockRenderTypeInt
 		VoxelShapeVector.create( 0.5, 3, 13.5, 1, 16, 14 )
 	);
 	
+	@NotNull
 	private static final VoxelShapeMemory BOTTOM_MIDDLE_SHAPES = VoxelShapeMemory.createHorizontalVoxelShapes(
 		Direction.SOUTH,
 		VoxelShapeVector.create( 0, 0, 8, 16, 3, 16 ),
@@ -143,12 +146,14 @@ public abstract class Fireplace extends MultiBlock implements BlockRenderTypeInt
 		VoxelShapeVector.create( 15, 3, 14, 16, 6, 15 )
 	);
 	
+	@NotNull
 	private static final VoxelShapeMemory BOTTOM_MIDDLE_COLLISION_SHAPES =
 		VoxelShapeMemory.createHorizontalVoxelShapes(
 			Direction.SOUTH,
 			VoxelShapeVector.create( 0, 0, 8, 16, 3, 16 )
 		);
 	
+	@NotNull
 	private static final VoxelShapeMemory BOTTOM_RIGHT_SHAPES = VoxelShapeMemory.createHorizontalVoxelShapes(
 		Direction.SOUTH,
 		VoxelShapeVector.create( 1, 0, 8, 10, 16, 16 ),
@@ -174,7 +179,7 @@ public abstract class Fireplace extends MultiBlock implements BlockRenderTypeInt
 		VoxelShapeVector.create( 15, 3, 13.5, 15.5, 16, 14 )
 	);
 	
-	Fireplace( BlockBehaviour.Properties _properties ) {
+	Fireplace( @NotNull BlockBehaviour.Properties _properties ) {
 		
 		super(
 			_properties
@@ -249,11 +254,5 @@ public abstract class Fireplace extends MultiBlock implements BlockRenderTypeInt
 				{ true, true, true }
 			}
 		};
-	}
-	
-	@Override
-	public RenderType getRenderType() {
-		
-		return RenderType.cutout();
 	}
 }

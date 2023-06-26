@@ -1,4 +1,5 @@
 {
+	"render_type": "minecraft:cutout",
 	"textures": {
 		"0":        "block/chain",
 		"2":        "block/sweet_berry_bush_stage3",

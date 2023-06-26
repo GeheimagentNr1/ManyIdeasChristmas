@@ -2,11 +2,9 @@ package de.geheimagentnr1.manyideas_christmas.elements.blocks.christmas.wreaths;
 
 import de.geheimagentnr1.manyideas_christmas.elements.block_state_properties.ModBlockStateProperties;
 import de.geheimagentnr1.manyideas_christmas.helpers.FlameHelper;
-import de.geheimagentnr1.manyideas_core.elements.blocks.BlockItemInterface;
-import de.geheimagentnr1.manyideas_core.elements.blocks.BlockRenderTypeInterface;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeMemory;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeVector;
-import net.minecraft.client.renderer.RenderType;
+import de.geheimagentnr1.minecraft_forge_api.elements.blocks.BlockItemInterface;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -15,7 +13,6 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -34,17 +31,22 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 
-public class WreathCandle extends Block implements BlockItemInterface, BlockRenderTypeInterface {
+public class WreathCandle extends Block implements BlockItemInterface {
 	
 	
+	@NotNull
 	public static final String registry_name = "wreath_candle";
 	
+	@NotNull
 	private static final Integer MIN_LIT_COUNT = 0;
 	
+	@NotNull
 	private static final Integer MAX_LIT_COUNT = 4;
 	
+	@NotNull
 	private static final VoxelShape LIT_0_1_SHAPE = VoxelShapeMemory.createVoxelShape(
 		VoxelShapeVector.create( 2, 0, 2, 14, 2.5, 14 ),
 		VoxelShapeVector.create( 2, 2.5, 6.5, 5, 3, 9.5 ),
@@ -57,6 +59,7 @@ public class WreathCandle extends Block implements BlockItemInterface, BlockRend
 		VoxelShapeVector.create( 7, 3, 2.5, 9, 7, 4.5 )
 	);
 	
+	@NotNull
 	private static final VoxelShapeMemory LIT_2_SHAPES = VoxelShapeMemory.createHorizontalVoxelShapes(
 		Direction.WEST,
 		VoxelShapeVector.create( 2, 0, 2, 14, 2.5, 14 ),
@@ -70,6 +73,7 @@ public class WreathCandle extends Block implements BlockItemInterface, BlockRend
 		VoxelShapeVector.create( 7, 3, 2.5, 9, 7, 4.5 )
 	);
 	
+	@NotNull
 	private static final VoxelShapeMemory LIT_3_SHAPES = VoxelShapeMemory.createHorizontalVoxelShapes(
 		Direction.WEST,
 		VoxelShapeVector.create( 2, 0, 2, 14, 2.5, 14 ),
@@ -83,6 +87,7 @@ public class WreathCandle extends Block implements BlockItemInterface, BlockRend
 		VoxelShapeVector.create( 7, 3, 2.5, 9, 7, 4.5 )
 	);
 	
+	@NotNull
 	private static final VoxelShapeMemory LIT_4_SHAPES = VoxelShapeMemory.createHorizontalVoxelShapes(
 		Direction.WEST,
 		VoxelShapeVector.create( 2, 0, 2, 14, 2.5, 14 ),
@@ -126,7 +131,9 @@ public class WreathCandle extends Block implements BlockItemInterface, BlockRend
 		};
 	}
 	
-	public BlockState getStateForPlacement( BlockPlaceContext context ) {
+	@Nullable
+	@Override
+	public BlockState getStateForPlacement( @NotNull BlockPlaceContext context ) {
 		
 		return defaultBlockState().setValue(
 			BlockStateProperties.HORIZONTAL_FACING,
@@ -217,20 +224,8 @@ public class WreathCandle extends Block implements BlockItemInterface, BlockRend
 		}
 	}
 	
-	protected void createBlockStateDefinition( StateDefinition.Builder<Block, BlockState> builder ) {
+	protected void createBlockStateDefinition( @NotNull StateDefinition.Builder<Block, BlockState> builder ) {
 		
 		builder.add( BlockStateProperties.HORIZONTAL_FACING, ModBlockStateProperties.WREATH_CANDLE_LIT_COUNT );
-	}
-	
-	@Override
-	public Item getBlockItem( Item.Properties _properties ) {
-		
-		return createBlockItem( this, _properties, registry_name );
-	}
-	
-	@Override
-	public RenderType getRenderType() {
-		
-		return RenderType.cutout();
 	}
 }

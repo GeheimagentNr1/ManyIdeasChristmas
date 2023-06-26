@@ -7,16 +7,17 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 
 
 public class FlameHelper {
 	
 	
 	public static void animateFlames(
-		Vec3 flamePos,
-		Level level,
-		BlockPos pos,
-		RandomSource randomSource,
+		@NotNull Vec3 flamePos,
+		@NotNull Level level,
+		@NotNull BlockPos pos,
+		@NotNull RandomSource randomSource,
 		double rotation ) {
 		
 		float randomFactor = randomSource.nextFloat();
@@ -77,7 +78,8 @@ public class FlameHelper {
 		};
 	}
 	
-	private static Vec3 turnVector( Vec3 vector, double[][] turn_matrix ) {
+	@NotNull
+	private static Vec3 turnVector( @NotNull Vec3 vector, double[][] turn_matrix ) {
 		
 		double vx = vector.x - 8.0;
 		double vy = vector.y - 8.0;
