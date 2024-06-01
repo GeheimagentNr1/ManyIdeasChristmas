@@ -9,7 +9,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -73,15 +75,16 @@ public class Wreath extends Block implements BlockItemInterface {
 	
 	@NotNull
 	@Override
-	public InteractionResult use(
-		@NotNull BlockState state,
-		@NotNull Level level,
-		@NotNull BlockPos pos,
-		@NotNull Player player,
-		@NotNull InteractionHand hand,
-		@NotNull BlockHitResult blockHitResult ) {
+	protected ItemInteractionResult useItemOn(
+		@NotNull ItemStack pStack,
+		@NotNull BlockState pState,
+		@NotNull Level pLevel,
+		@NotNull BlockPos pPos,
+		@NotNull Player pPlayer,
+		@NotNull InteractionHand pHand,
+		@NotNull BlockHitResult pHitResult ) {
 		
-		return DecorateableBlockHelper.use( state, level, pos, player, hand );
+		return DecorateableBlockHelper.use( pStack, pState, pLevel, pPos, pPlayer );
 	}
 	
 	protected void createBlockStateDefinition( StateDefinition.Builder<Block, BlockState> builder ) {

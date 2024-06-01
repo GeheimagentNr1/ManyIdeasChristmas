@@ -63,17 +63,15 @@ public class PlushiCat extends EveryDirectionBlock implements BlockItemInterface
 		return SHAPES.getShapeFromEveryDirectionFacing( state.getValue( ModBlockStateProperties.EVERY_DIRECTION_FACING ) );
 	}
 	
-	@NotNull
 	@Override
-	public InteractionResult use(
-		@NotNull BlockState state,
-		@NotNull Level level,
-		@NotNull BlockPos pos,
-		@NotNull Player player,
-		@NotNull InteractionHand hand,
-		@NotNull BlockHitResult blockHitResult ) {
+	protected InteractionResult useWithoutItem(
+		BlockState pState,
+		Level pLevel,
+		BlockPos pPos,
+		Player pPlayer,
+		BlockHitResult pHitResult ) {
 		
-		level.playSound( player, pos, SoundEvents.CAT_PURR, SoundSource.NEUTRAL, 1.0F, 1.0F );
+		pLevel.playSound( pPlayer, pPos, SoundEvents.CAT_PURR, SoundSource.NEUTRAL, 1.0F, 1.0F );
 		return InteractionResult.SUCCESS;
 	}
 }

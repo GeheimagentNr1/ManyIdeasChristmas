@@ -11,7 +11,8 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -143,51 +144,51 @@ public class WreathCandle extends Block implements BlockItemInterface {
 	
 	@NotNull
 	@Override
-	public InteractionResult use(
-		@NotNull BlockState state,
-		@NotNull Level level,
-		@NotNull BlockPos pos,
-		@NotNull Player player,
-		@NotNull InteractionHand hand,
-		@NotNull BlockHitResult blockHitResult ) {
+	protected ItemInteractionResult useItemOn(
+		@NotNull ItemStack pStack,
+		@NotNull BlockState pState,
+		@NotNull Level pLevel,
+		@NotNull BlockPos pPos,
+		@NotNull Player pPlayer,
+		@NotNull InteractionHand pHand,
+		@NotNull BlockHitResult pHitResult ) {
 		
-		ItemStack stack = player.getItemInHand( hand );
-		if( stack.isEmpty() ) {
-			Integer currentlitCount = state.getValue( ModBlockStateProperties.WREATH_CANDLE_LIT_COUNT );
+		if( pStack.isEmpty() ) {
+			Integer currentlitCount = pState.getValue( ModBlockStateProperties.WREATH_CANDLE_LIT_COUNT );
 			if( currentlitCount > MIN_LIT_COUNT ) {
-				level.playSound( player, pos, SoundEvents.CANDLE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, 1.0F );
-				level.setBlock(
-					pos,
-					state.setValue( ModBlockStateProperties.WREATH_CANDLE_LIT_COUNT, currentlitCount - 1 ),
+				pLevel.playSound( pPlayer, pPos, SoundEvents.CANDLE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, 1.0F );
+				pLevel.setBlock(
+					pPos,
+					pState.setValue( ModBlockStateProperties.WREATH_CANDLE_LIT_COUNT, currentlitCount - 1 ),
 					3
 				);
-				return InteractionResult.SUCCESS;
+				return ItemInteractionResult.SUCCESS;
 			}
 		} else {
-			if( stack.is( Items.FLINT_AND_STEEL ) ) {
-				Integer currentlitCount = state.getValue( ModBlockStateProperties.WREATH_CANDLE_LIT_COUNT );
+			if( pStack.is( Items.FLINT_AND_STEEL ) ) {
+				Integer currentlitCount = pState.getValue( ModBlockStateProperties.WREATH_CANDLE_LIT_COUNT );
 				if( currentlitCount < MAX_LIT_COUNT ) {
-					if( !player.isCreative() ) {
-						stack.hurtAndBreak( 1, player, breakPlayer -> breakPlayer.broadcastBreakEvent( hand ) );
+					if( !pPlayer.isCreative() ) {
+						pStack.hurtAndBreak( 1, pPlayer, LivingEntity.getSlotForHand( pHand ) );
 					}
-					level.playSound(
-						player,
-						pos,
+					pLevel.playSound(
+						pPlayer,
+						pPos,
 						SoundEvents.FLINTANDSTEEL_USE,
 						SoundSource.BLOCKS,
 						1.0F,
-						level.getRandom().nextFloat() * 0.4F + 0.8F
+						pLevel.getRandom().nextFloat() * 0.4F + 0.8F
 					);
-					level.setBlock(
-						pos,
-						state.setValue( ModBlockStateProperties.WREATH_CANDLE_LIT_COUNT, currentlitCount + 1 ),
+					pLevel.setBlock(
+						pPos,
+						pState.setValue( ModBlockStateProperties.WREATH_CANDLE_LIT_COUNT, currentlitCount + 1 ),
 						3
 					);
-					return InteractionResult.SUCCESS;
+					return ItemInteractionResult.SUCCESS;
 				}
 			}
 		}
-		return InteractionResult.PASS;
+		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 	}
 	
 	@Override

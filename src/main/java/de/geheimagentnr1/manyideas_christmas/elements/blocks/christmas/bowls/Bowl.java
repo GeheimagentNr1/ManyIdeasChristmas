@@ -14,6 +14,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -111,32 +112,32 @@ public abstract class Bowl extends Block implements BlockItemInterface {
 	
 	@NotNull
 	@Override
-	public InteractionResult use(
-		@NotNull BlockState state,
-		@NotNull Level level,
-		@NotNull BlockPos pos,
-		@NotNull Player player,
-		@NotNull InteractionHand hand,
-		@NotNull BlockHitResult blockHitResult ) {
+	protected ItemInteractionResult useItemOn(
+		@NotNull ItemStack pStack,
+		@NotNull BlockState pState,
+		@NotNull Level pLevel,
+		@NotNull BlockPos pPos,
+		@NotNull Player pPlayer,
+		@NotNull InteractionHand pHand,
+		@NotNull BlockHitResult pHitResult ) {
 		
-		BowlContent bowlContent = state.getValue( ModBlockStateProperties.BOWL_CONTENT );
-		ItemStack stack = player.getItemInHand( hand );
+		BowlContent bowlContent = pState.getValue( ModBlockStateProperties.BOWL_CONTENT );
 		if( bowlContent == BowlContent.EMPTY ) {
-			if( stack.is( Items.APPLE ) ) {
-				if( stack.getCount() >= APPLE_COUNT ) {
-					level.playSound( player, pos, SoundEvents.COMPOSTER_FILL, SoundSource.BLOCKS, 1.0F, 1.0F );
-					if( !player.isCreative() ) {
-						stack.shrink( APPLE_COUNT );
+			if( pStack.is( Items.APPLE ) ) {
+				if( pStack.getCount() >= APPLE_COUNT ) {
+					pLevel.playSound( pPlayer, pPos, SoundEvents.COMPOSTER_FILL, SoundSource.BLOCKS, 1.0F, 1.0F );
+					if( !pPlayer.isCreative() ) {
+						pStack.shrink( APPLE_COUNT );
 					}
-					level.setBlock(
-						pos,
-						state.setValue( ModBlockStateProperties.BOWL_CONTENT, BowlContent.APPLES ),
+					pLevel.setBlock(
+						pPos,
+						pState.setValue( ModBlockStateProperties.BOWL_CONTENT, BowlContent.APPLES ),
 						3
 					);
-					return InteractionResult.SUCCESS;
+					return ItemInteractionResult.SUCCESS;
 				} else {
-					if( level.isClientSide() ) {
-						player.sendSystemMessage(
+					if( pLevel.isClientSide() ) {
+						pPlayer.sendSystemMessage(
 							Component.translatable(
 								TranslationKeyHelper.generateMessageTranslationKey(
 									ManyIdeasChristmas.MODID,
@@ -148,21 +149,21 @@ public abstract class Bowl extends Block implements BlockItemInterface {
 					}
 				}
 			} else {
-				if( stack.is( Items.COOKIE ) ) {
-					if( stack.getCount() >= COOKIE_COUNT ) {
-						level.playSound( player, pos, SoundEvents.COMPOSTER_FILL, SoundSource.BLOCKS, 1.0F, 1.0F );
-						if( !player.isCreative() ) {
-							stack.shrink( COOKIE_COUNT );
+				if( pStack.is( Items.COOKIE ) ) {
+					if( pStack.getCount() >= COOKIE_COUNT ) {
+						pLevel.playSound( pPlayer, pPos, SoundEvents.COMPOSTER_FILL, SoundSource.BLOCKS, 1.0F, 1.0F );
+						if( !pPlayer.isCreative() ) {
+							pStack.shrink( COOKIE_COUNT );
 						}
-						level.setBlock(
-							pos,
-							state.setValue( ModBlockStateProperties.BOWL_CONTENT, BowlContent.COOKIES ),
+						pLevel.setBlock(
+							pPos,
+							pState.setValue( ModBlockStateProperties.BOWL_CONTENT, BowlContent.COOKIES ),
 							3
 						);
-						return InteractionResult.SUCCESS;
+						return ItemInteractionResult.SUCCESS;
 					} else {
-						if( level.isClientSide() ) {
-							player.sendSystemMessage(
+						if( pLevel.isClientSide() ) {
+							pPlayer.sendSystemMessage(
 								Component.translatable(
 									TranslationKeyHelper.generateMessageTranslationKey(
 										ManyIdeasChristmas.MODID,
@@ -176,28 +177,28 @@ public abstract class Bowl extends Block implements BlockItemInterface {
 				}
 			}
 		} else {
-			if( stack.isEmpty() ) {
-				level.playSound( player, pos, SoundEvents.COMPOSTER_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F );
-				if( !player.isCreative() ) {
+			if( pStack.isEmpty() ) {
+				pLevel.playSound( pPlayer, pPos, SoundEvents.COMPOSTER_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F );
+				if( !pPlayer.isCreative() ) {
 					ItemStack dropStack;
 					switch( bowlContent ) {
 						case APPLES -> dropStack = new ItemStack( Items.APPLE, APPLE_COUNT );
 						case COOKIES -> dropStack = new ItemStack( Items.COOKIE, COOKIE_COUNT );
 						default -> dropStack = null;
 					}
-					if( dropStack != null && !player.addItem( dropStack ) ) {
-						player.drop( dropStack, false );
+					if( dropStack != null && !pPlayer.addItem( dropStack ) ) {
+						pPlayer.drop( dropStack, false );
 					}
 				}
-				level.setBlock(
-					pos,
-					state.setValue( ModBlockStateProperties.BOWL_CONTENT, BowlContent.EMPTY ),
+				pLevel.setBlock(
+					pPos,
+					pState.setValue( ModBlockStateProperties.BOWL_CONTENT, BowlContent.EMPTY ),
 					3
 				);
-				return InteractionResult.SUCCESS;
+				return ItemInteractionResult.SUCCESS;
 			}
 		}
-		return InteractionResult.PASS;
+		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 	}
 	
 	protected void createBlockStateDefinition( @NotNull StateDefinition.Builder<Block, BlockState> builder ) {

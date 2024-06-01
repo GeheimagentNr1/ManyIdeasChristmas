@@ -8,6 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -150,30 +151,30 @@ public class Present extends Block implements BlockItemInterface {
 	
 	@NotNull
 	@Override
-	public InteractionResult use(
-		@NotNull BlockState state,
-		@NotNull Level level,
-		@NotNull BlockPos pos,
-		@NotNull Player player,
-		@NotNull InteractionHand hand,
-		@NotNull BlockHitResult blockHitResult ) {
+	protected ItemInteractionResult useItemOn(
+		@NotNull ItemStack pStack,
+		@NotNull BlockState pState,
+		@NotNull Level pLevel,
+		@NotNull BlockPos pPos,
+		@NotNull Player pPlayer,
+		@NotNull InteractionHand pHand,
+		@NotNull BlockHitResult pHitResult ) {
 		
-		ItemStack stack = player.getItemInHand( hand );
-		if( stack.is( asItem() ) ) {
-			Integer currentPresentCount = state.getValue( ModBlockStateProperties.PRESENT_COUNT );
+		if( pStack.is( asItem() ) ) {
+			Integer currentPresentCount = pState.getValue( ModBlockStateProperties.PRESENT_COUNT );
 			if( currentPresentCount < MAX_PRESENT_COUNT ) {
-				if( !player.isCreative() ) {
-					stack.shrink( 1 );
+				if( !pPlayer.isCreative() ) {
+					pStack.shrink( 1 );
 				}
-				level.setBlock(
-					pos,
-					state.setValue( ModBlockStateProperties.PRESENT_COUNT, currentPresentCount + 1 ),
+				pLevel.setBlock(
+					pPos,
+					pState.setValue( ModBlockStateProperties.PRESENT_COUNT, currentPresentCount + 1 ),
 					3
 				);
-				return InteractionResult.SUCCESS;
+				return ItemInteractionResult.SUCCESS;
 			}
 		}
-		return InteractionResult.PASS;
+		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 	}
 	
 	

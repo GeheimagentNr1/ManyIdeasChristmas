@@ -7,6 +7,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -19,15 +20,14 @@ public class DecorateableBlockHelper {
 	
 	
 	@NotNull
-	public static InteractionResult use(
+	public static ItemInteractionResult use(
+		@NotNull ItemStack stack,
 		@NotNull BlockState state,
 		@NotNull Level level,
 		@NotNull BlockPos pos,
-		@NotNull Player player,
-		@NotNull InteractionHand hand ) {
+		@NotNull Player player ) {
 		
 		DecorationType decorationType = state.getValue( ModBlockStateProperties.DECORATION_TYPE );
-		ItemStack stack = player.getItemInHand( hand );
 		if( decorationType == DecorationType.NONE ) {
 			if( stack.is( Items.GOLD_INGOT ) ) {
 				level.playSound( player, pos, SoundEvents.COMPOSTER_FILL, SoundSource.BLOCKS, 1.0F, 1.0F );
@@ -39,7 +39,7 @@ public class DecorateableBlockHelper {
 					state.setValue( ModBlockStateProperties.DECORATION_TYPE, DecorationType.GOLD ),
 					3
 				);
-				return InteractionResult.SUCCESS;
+				return ItemInteractionResult.SUCCESS;
 			} else {
 				if( stack.is( Items.SWEET_BERRIES ) ) {
 					level.playSound( player, pos, SoundEvents.COMPOSTER_FILL, SoundSource.BLOCKS, 1.0F, 1.0F );
@@ -51,7 +51,7 @@ public class DecorateableBlockHelper {
 						state.setValue( ModBlockStateProperties.DECORATION_TYPE, DecorationType.RED ),
 						3
 					);
-					return InteractionResult.SUCCESS;
+					return ItemInteractionResult.SUCCESS;
 				} else {
 					if( stack.is( Items.GLOWSTONE_DUST ) ) {
 						level.playSound( player, pos, SoundEvents.COMPOSTER_FILL, SoundSource.BLOCKS, 1.0F, 1.0F );
@@ -63,7 +63,7 @@ public class DecorateableBlockHelper {
 							state.setValue( ModBlockStateProperties.DECORATION_TYPE, DecorationType.YELLOW ),
 							3
 						);
-						return InteractionResult.SUCCESS;
+						return ItemInteractionResult.SUCCESS;
 					}
 				}
 			}
@@ -89,6 +89,6 @@ public class DecorateableBlockHelper {
 				);
 			}
 		}
-		return InteractionResult.PASS;
+		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 	}
 }

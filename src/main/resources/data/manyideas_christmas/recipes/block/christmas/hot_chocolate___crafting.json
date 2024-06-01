@@ -8,16 +8,23 @@
 			"item": "minecraft:cocoa_beans"
 		},
 		{
-			"type": "forge:nbt",
-			"item": "minecraft:potion",
-			"nbt":  "{Potion:\"minecraft:water\"}"
+			"type": "recipes_lib:components",
+			"item": {
+				"id": "minecraft:potion",
+				"components": {
+					"minecraft:potion_contents": {
+						"potion": "minecraft:water"
+					}
+				}
+			},
+			"matchType": "CONTAINS"
 		},
 		{
 			"item": "manyideas_core:rainbow_stained_glass_block"
 		}
 	],
 	"result":      {
-		"item":  "manyideas_christmas:hot_chocolate",
+		"id":  "manyideas_christmas:hot_chocolate",
 		"count": 2
 	}
 }
