@@ -1,9 +1,11 @@
 package de.geheimagentnr1.manyideas_christmas;
 
+import de.geheimagentnr1.manyideas_core.core.AbstractMod;
 import de.geheimagentnr1.manyideas_christmas.elements.blocks.ModBlocksRegisterFactory;
 import de.geheimagentnr1.manyideas_christmas.elements.creative_mod_tabs.ModCreativeModeTabRegisterFactory;
-import de.geheimagentnr1.minecraft_forge_api.AbstractMod;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
 
 
@@ -13,6 +15,11 @@ public class ManyIdeasChristmas extends AbstractMod {
 	
 	@NotNull
 	public static final String MODID = "manyideas_christmas";
+	
+	public ManyIdeasChristmas( @NotNull IEventBus modEventBus, @NotNull ModContainer modContainer ) {
+		
+		super( modEventBus, modContainer );
+	}
 	
 	@NotNull
 	@Override

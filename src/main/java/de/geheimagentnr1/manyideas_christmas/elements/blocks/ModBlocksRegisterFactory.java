@@ -6,133 +6,41 @@ import de.geheimagentnr1.manyideas_christmas.elements.blocks.christmas.bowls.*;
 import de.geheimagentnr1.manyideas_christmas.elements.blocks.christmas.fireplaces.*;
 import de.geheimagentnr1.manyideas_christmas.elements.blocks.christmas.wreaths.Wreath;
 import de.geheimagentnr1.manyideas_christmas.elements.blocks.christmas.wreaths.WreathCandle;
-import de.geheimagentnr1.minecraft_forge_api.elements.blocks.BlocksRegisterFactory;
-import de.geheimagentnr1.minecraft_forge_api.registry.RegistryEntry;
-import de.geheimagentnr1.minecraft_forge_api.registry.RegistryKeys;
+import de.geheimagentnr1.manyideas_core.core.elements.blocks.BlocksRegisterFactory;
+import de.geheimagentnr1.manyideas_core.core.registry.RegistryEntry;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.registries.ObjectHolder;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.registries.RegisterEvent;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 
-@SuppressWarnings( { "StaticNonFinalField", "PublicField", "unused" } )
 public class ModBlocksRegisterFactory extends BlocksRegisterFactory {
 	
-	//TODO:
-	// B - Block Textur fertig
-	// C - Cullface korrekt
-	// P - Partikel fertig
-	// F - Funktion fertig
-	// I - Item fertig
-	// N - Name und Registierungsname vorhanden und fertig
-	// R - Rezept fertig
-	// L - Loottable fertig
-	// T - Tags fertig
 	
-	//Christmas: Bowls
+	@NotNull
+	@Override
+	protected String getModId() {
+		
+		return ManyIdeasChristmas.MODID;
+	}
 	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + BowlAcacia.registry_name )
-	public static BowlAcacia BOWL_ACACIA;
+	@SubscribeEvent
+	public void registerEvent( @NotNull RegisterEvent event ) {
+		
+		doRegisterEvent( event );
+	}
 	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + BowlBirch.registry_name )
-	public static BowlBirch BOWL_BIRCH;
-	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + BowlCrimson.registry_name )
-	public static BowlCrimson BOWL_CRIMSON;
-	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + BowlDarkOak.registry_name )
-	public static BowlDarkOak BOWL_DARK_OAK;
-	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + BowlJungle.registry_name )
-	public static BowlJungle BOWL_JUNGLE;
-	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + BowlOak.registry_name )
-	public static BowlOak BOWL_OAK;
-	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + BowlSpruce.registry_name )
-	public static BowlSpruce BOWL_SPRUCE;
-	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + BowlWarped.registry_name )
-	public static BowlWarped BOWL_WARPED;
-	
-	//Christmas: Fireplaces
-	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + FireplaceAcacia.registry_name )
-	public static FireplaceAcacia FIREPLACE_ACACIA;
-	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + FireplaceBirch.registry_name )
-	public static FireplaceBirch FIREPLACE_BIRCH;
-	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + FireplaceCrimson.registry_name )
-	public static FireplaceCrimson FIREPLACE_CRIMSON;
-	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + FireplaceDarkOak.registry_name )
-	public static FireplaceDarkOak FIREPLACE_DARK_OAK;
-	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + FireplaceJungle.registry_name )
-	public static FireplaceJungle FIREPLACE_JUNGLE;
-	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + FireplaceOak.registry_name )
-	public static FireplaceOak FIREPLACE_OAK;
-	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + FireplaceSpruce.registry_name )
-	public static FireplaceSpruce FIREPLACE_SPRUCE;
-	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + FireplaceWarped.registry_name )
-	public static FireplaceWarped FIREPLACE_WARPED;
-	
-	//Christmas: Wreaths
-	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + Wreath.registry_name )
-	public static Wreath WREATH;
-	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + WreathCandle.registry_name )
-	public static WreathCandle WREATH_CANDLE;
-	
-	//Christmas
-	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + ChristmasTree.registry_name )
-	public static ChristmasTree CHRISTMAS_TREE;
-	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + Garland.registry_name )
-	public static Garland GARLAND;
-	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + GoldenStar.registry_name )
-	public static GoldenStar GOLDEN_STAR;
-	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + HotChocolate.registry_name )
-	public static HotChocolate HOT_CHOCOLATE;
-	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + PlushiCat.registry_name )
-	public static PlushiCat PLUSHI_CAT;
-	
-	@ObjectHolder( registryName = RegistryKeys.BLOCKS,
-		value = ManyIdeasChristmas.MODID + ":" + Present.registry_name )
-	public static Present PRESENT;
+	@NotNull
+	public Block getGoldenStar() {
+		
+		return getBlocks().stream()
+			.filter( entry -> entry.getName().equals( GoldenStar.registry_name ) )
+			.findFirst()
+			.map( RegistryEntry::getValue )
+			.orElseThrow();
+	}
 	
 	@NotNull
 	@Override
