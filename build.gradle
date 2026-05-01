@@ -161,7 +161,9 @@ curseforge {
         changelogType = 'markdown'
         changelog = project.file('CHANGELOG.md').text
         releaseType = 'release'
-        addGameVersion "${minecraft_version}"
+        ((List) new JsonSlurper().parseText("${minecraft_versions}")).forEach { final version ->
+            addGameVersion version
+        }
         addGameVersion 'NeoForge'
         if(Boolean.parseBoolean(usableOnClientSide)) {
             addGameVersion 'Client'
@@ -204,7 +206,7 @@ modrinth {
     versionName = "${mod_name} ${minecraft_version}-${version}"
     changelog = project.file("CHANGELOG.md").text
     uploadFile = "./build/libs/${rootProject.name}-${version}.jar"
-    gameVersions = ["${minecraft_version}"]
+    gameVersions = (List) new JsonSlurper().parseText("${minecraft_versions}")
     loaders = ["neoforge"]
     dependencies {
         ((List) new JsonSlurper().parseText("${deployment_dependencies}")).forEach { final dependency ->
