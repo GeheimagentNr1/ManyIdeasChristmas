@@ -136,15 +136,14 @@ public abstract class Bowl extends Block implements BlockItemInterface {
 					return InteractionResult.SUCCESS;
 				} else {
 					if( pLevel.isClientSide() ) {
-						pPlayer.displayClientMessage(
+						pPlayer.sendSystemMessage(
 							Component.translatable(
 								TranslationKeyHelper.generateMessageTranslationKey(
 									ManyIdeasChristmas.MODID,
 									"bowl_to_few_apples"
 								),
 								APPLE_COUNT
-							),
-							false
+							)
 						);
 					}
 				}
@@ -163,15 +162,14 @@ public abstract class Bowl extends Block implements BlockItemInterface {
 						return InteractionResult.SUCCESS;
 					} else {
 						if( pLevel.isClientSide() ) {
-							pPlayer.displayClientMessage(
+							pPlayer.sendSystemMessage(
 								Component.translatable(
 									TranslationKeyHelper.generateMessageTranslationKey(
 										ManyIdeasChristmas.MODID,
 										"bowl_to_few_cookies"
 									),
 									COOKIE_COUNT
-								),
-								false
+								)
 							);
 						}
 					}

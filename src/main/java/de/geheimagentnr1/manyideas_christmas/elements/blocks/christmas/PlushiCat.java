@@ -11,6 +11,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.animal.feline.CatSoundVariants;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -71,7 +72,14 @@ public class PlushiCat extends EveryDirectionBlock implements BlockItemInterface
 		Player pPlayer,
 		BlockHitResult pHitResult ) {
 		
-		pLevel.playSound( pPlayer, pPos, SoundEvents.CAT_PURR, SoundSource.NEUTRAL, 1.0F, 1.0F );
+		pLevel.playSound(
+			pPlayer,
+			pPos,
+			SoundEvents.CAT_SOUNDS.get( CatSoundVariants.SoundSet.CLASSIC ).adultSounds().purrSound().value(),
+			SoundSource.NEUTRAL,
+			1.0F,
+			1.0F
+		);
 		return InteractionResult.SUCCESS;
 	}
 }

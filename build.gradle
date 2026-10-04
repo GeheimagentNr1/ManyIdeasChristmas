@@ -4,7 +4,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.+'
+    id 'net.neoforged.moddev' version '2.0.147'
     id("com.jaredsburrows.license") version "0.+"
     id 'io.github.CDAGaming.cursegradle' version '1.+'
     id "com.modrinth.minotaur" version "2.+"
@@ -35,7 +35,7 @@ apply from: "custom.gradle"
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(25)
         vendor = JvmVendorSpec.ADOPTIUM
     }
 }
@@ -80,7 +80,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 repositories {
     maven {
         name "local-test-repo"
-        url "file:" + project.projectDir.toString() + "/" + local_repository_path
+        url file( local_repository_path ).toURI()
     }
 }
 
@@ -136,7 +136,7 @@ publishing {
     repositories {
         maven {
             name "local-test-repo"
-            url "file:" + project.projectDir.toString() + "/" + local_repository_path
+            url file( local_repository_path ).toURI()
         }
     }
 }
