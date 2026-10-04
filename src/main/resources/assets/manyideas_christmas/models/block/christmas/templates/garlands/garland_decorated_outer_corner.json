@@ -1,7 +1,7 @@
 {
 	"render_type": "minecraft:cutout",
 	"textures": {
-		"0":        "block/chain",
+		"0":        "minecraft:block/iron_chain",
 		"2":        "block/sweet_berry_bush_stage3",
 		"particle": "block/black_wool"
 	},

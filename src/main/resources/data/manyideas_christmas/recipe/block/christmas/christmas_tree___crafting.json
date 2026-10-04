@@ -1,22 +1,16 @@
 {
-	"type":    "minecraft:crafting_shaped",
+	"type": "minecraft:crafting_shaped",
 	"pattern": [
 		"ELE",
 		"ELE",
 		"EIE"
 	],
-	"key":     {
-		"E": {
-			"item": "minecraft:spruce_leaves"
-		},
-		"L": {
-			"item": "manyideas_core:log_stripped_smooth_spruce"
-		},
-		"I": {
-			"item": "manyideas_core:plate_iron"
-		}
+	"key": {
+		"E": "minecraft:spruce_leaves",
+		"L": "manyideas_core:log_stripped_smooth_spruce",
+		"I": "manyideas_core:plate_iron"
 	},
-	"result":  {
+	"result": {
 		"id": "manyideas_christmas:christmas_tree"
 	}
 }

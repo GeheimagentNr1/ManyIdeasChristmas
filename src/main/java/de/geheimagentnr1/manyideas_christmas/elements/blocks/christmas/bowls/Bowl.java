@@ -14,7 +14,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -112,7 +111,7 @@ public abstract class Bowl extends Block implements BlockItemInterface {
 	
 	@NotNull
 	@Override
-	protected ItemInteractionResult useItemOn(
+	protected InteractionResult useItemOn(
 		@NotNull ItemStack pStack,
 		@NotNull BlockState pState,
 		@NotNull Level pLevel,
@@ -134,17 +133,18 @@ public abstract class Bowl extends Block implements BlockItemInterface {
 						pState.setValue( ModBlockStateProperties.BOWL_CONTENT, BowlContent.APPLES ),
 						3
 					);
-					return ItemInteractionResult.SUCCESS;
+					return InteractionResult.SUCCESS;
 				} else {
 					if( pLevel.isClientSide() ) {
-						pPlayer.sendSystemMessage(
+						pPlayer.displayClientMessage(
 							Component.translatable(
 								TranslationKeyHelper.generateMessageTranslationKey(
 									ManyIdeasChristmas.MODID,
 									"bowl_to_few_apples"
 								),
 								APPLE_COUNT
-							)
+							),
+							false
 						);
 					}
 				}
@@ -160,17 +160,18 @@ public abstract class Bowl extends Block implements BlockItemInterface {
 							pState.setValue( ModBlockStateProperties.BOWL_CONTENT, BowlContent.COOKIES ),
 							3
 						);
-						return ItemInteractionResult.SUCCESS;
+						return InteractionResult.SUCCESS;
 					} else {
 						if( pLevel.isClientSide() ) {
-							pPlayer.sendSystemMessage(
+							pPlayer.displayClientMessage(
 								Component.translatable(
 									TranslationKeyHelper.generateMessageTranslationKey(
 										ManyIdeasChristmas.MODID,
 										"bowl_to_few_cookies"
 									),
 									COOKIE_COUNT
-								)
+								),
+								false
 							);
 						}
 					}
@@ -195,10 +196,10 @@ public abstract class Bowl extends Block implements BlockItemInterface {
 					pState.setValue( ModBlockStateProperties.BOWL_CONTENT, BowlContent.EMPTY ),
 					3
 				);
-				return ItemInteractionResult.SUCCESS;
+				return InteractionResult.SUCCESS;
 			}
 		}
-		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+		return InteractionResult.TRY_WITH_EMPTY_HAND;
 	}
 	
 	protected void createBlockStateDefinition( @NotNull StateDefinition.Builder<Block, BlockState> builder ) {

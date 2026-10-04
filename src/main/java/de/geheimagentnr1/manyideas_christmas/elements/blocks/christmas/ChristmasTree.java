@@ -1,5 +1,6 @@
 package de.geheimagentnr1.manyideas_christmas.elements.blocks.christmas;
 
+import de.geheimagentnr1.manyideas_core.core.registry.RegistryHelper;
 import de.geheimagentnr1.manyideas_christmas.elements.block_state_properties.ModBlockStateProperties;
 import de.geheimagentnr1.manyideas_christmas.helpers.DecorateableBlockHelper;
 import de.geheimagentnr1.manyideas_core.elements.blocks.template_blocks.multi_block.MultiBlock;
@@ -9,7 +10,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
@@ -63,7 +63,7 @@ public class ChristmasTree extends MultiBlock {
 	public ChristmasTree() {
 		
 		super(
-			BlockBehaviour.Properties.of()
+			RegistryHelper.withBlockId( BlockBehaviour.Properties.of() )
 				.mapColor( MapColor.PODZOL )
 				.strength( 3.5F )
 				.sound( SoundType.WOOD )
@@ -102,7 +102,7 @@ public class ChristmasTree extends MultiBlock {
 	
 	@NotNull
 	@Override
-	protected ItemInteractionResult useItemOn(
+	protected InteractionResult useItemOn(
 		@NotNull ItemStack pStack,
 		@NotNull BlockState pState,
 		@NotNull Level pLevel,

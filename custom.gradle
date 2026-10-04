@@ -1,7 +1,7 @@
 repositories {
     maven {
         name "local-test-repo"
-        url "file:" + project.projectDir.toString() + "/" + local_repository_path
+        url file( local_repository_path ).toURI()
     }
     maven {
         // location of the maven that hosts JEI files
@@ -17,7 +17,7 @@ repositories {
 
 dependencies {
     //ManyIdeasCore
-    implementation "de.geheimagentnr1.manyideas_core:ManyIdeasCore-${minecraft_version}:${mic_version}"
+    implementation "de.geheimagentnr1.manyideas_core:ManyIdeasCore-${mic_minecraft_version}:${mic_version}"
     //RecipesLibrary
-    runtimeOnly "de.geheimagentnr1.recipes_lib:RecipesLibrary-${minecraft_version}:${rl_version}"
+    runtimeOnly "de.geheimagentnr1.recipes_lib:RecipesLibrary-${rl_minecraft_version}:${rl_version}"
 }

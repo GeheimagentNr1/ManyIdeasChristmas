@@ -1,5 +1,6 @@
 package de.geheimagentnr1.manyideas_christmas.elements.blocks.christmas.wreaths;
 
+import de.geheimagentnr1.manyideas_core.core.registry.RegistryHelper;
 import de.geheimagentnr1.manyideas_christmas.elements.block_state_properties.ModBlockStateProperties;
 import de.geheimagentnr1.manyideas_christmas.helpers.FlameHelper;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeMemory;
@@ -11,8 +12,8 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -105,7 +106,7 @@ public class WreathCandle extends Block implements BlockItemInterface {
 	public WreathCandle() {
 		
 		super(
-			BlockBehaviour.Properties.of()
+			RegistryHelper.withBlockId( BlockBehaviour.Properties.of() )
 				.mapColor( MapColor.PLANT )
 				.strength( 2.0F )
 				.sound( SoundType.GRASS )
@@ -144,7 +145,7 @@ public class WreathCandle extends Block implements BlockItemInterface {
 	
 	@NotNull
 	@Override
-	protected ItemInteractionResult useItemOn(
+	protected InteractionResult useItemOn(
 		@NotNull ItemStack pStack,
 		@NotNull BlockState pState,
 		@NotNull Level pLevel,
@@ -162,14 +163,18 @@ public class WreathCandle extends Block implements BlockItemInterface {
 					pState.setValue( ModBlockStateProperties.WREATH_CANDLE_LIT_COUNT, currentlitCount - 1 ),
 					3
 				);
-				return ItemInteractionResult.SUCCESS;
+				return InteractionResult.SUCCESS;
 			}
 		} else {
 			if( pStack.is( Items.FLINT_AND_STEEL ) ) {
 				Integer currentlitCount = pState.getValue( ModBlockStateProperties.WREATH_CANDLE_LIT_COUNT );
 				if( currentlitCount < MAX_LIT_COUNT ) {
 					if( !pPlayer.isCreative() ) {
-						pStack.hurtAndBreak( 1, pPlayer, LivingEntity.getSlotForHand( pHand ) );
+						pStack.hurtAndBreak(
+							1,
+							pPlayer,
+							pHand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND
+						);
 					}
 					pLevel.playSound(
 						pPlayer,
@@ -184,11 +189,11 @@ public class WreathCandle extends Block implements BlockItemInterface {
 						pState.setValue( ModBlockStateProperties.WREATH_CANDLE_LIT_COUNT, currentlitCount + 1 ),
 						3
 					);
-					return ItemInteractionResult.SUCCESS;
+					return InteractionResult.SUCCESS;
 				}
 			}
 		}
-		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+		return InteractionResult.TRY_WITH_EMPTY_HAND;
 	}
 	
 	@Override

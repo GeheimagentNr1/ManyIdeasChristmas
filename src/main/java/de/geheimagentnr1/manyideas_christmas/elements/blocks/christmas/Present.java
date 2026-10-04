@@ -1,5 +1,6 @@
 package de.geheimagentnr1.manyideas_christmas.elements.blocks.christmas;
 
+import de.geheimagentnr1.manyideas_core.core.registry.RegistryHelper;
 import de.geheimagentnr1.manyideas_christmas.elements.block_state_properties.ModBlockStateProperties;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeMemory;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeVector;
@@ -8,7 +9,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -113,7 +113,7 @@ public class Present extends Block implements BlockItemInterface {
 	public Present() {
 		
 		super(
-			BlockBehaviour.Properties.of()
+			RegistryHelper.withBlockId( BlockBehaviour.Properties.of() )
 				.mapColor( MapColor.SNOW )
 				.strength( 0.5F )
 				.sound( SoundType.GRASS )
@@ -151,7 +151,7 @@ public class Present extends Block implements BlockItemInterface {
 	
 	@NotNull
 	@Override
-	protected ItemInteractionResult useItemOn(
+	protected InteractionResult useItemOn(
 		@NotNull ItemStack pStack,
 		@NotNull BlockState pState,
 		@NotNull Level pLevel,
@@ -171,10 +171,10 @@ public class Present extends Block implements BlockItemInterface {
 					pState.setValue( ModBlockStateProperties.PRESENT_COUNT, currentPresentCount + 1 ),
 					3
 				);
-				return ItemInteractionResult.SUCCESS;
+				return InteractionResult.SUCCESS;
 			}
 		}
-		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+		return InteractionResult.TRY_WITH_EMPTY_HAND;
 	}
 	
 	

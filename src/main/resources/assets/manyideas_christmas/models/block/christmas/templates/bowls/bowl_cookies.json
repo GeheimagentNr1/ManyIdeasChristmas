@@ -1,7 +1,7 @@
 {
 	"render_type": "minecraft:cutout",
 	"textures": {
-		"1":        "item/cookie",
+		"1":        "manyideas_christmas:block/cookie",
 		"particle": "#wood"
 	},
 	"elements": [

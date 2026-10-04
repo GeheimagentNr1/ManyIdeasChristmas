@@ -1,8 +1,6 @@
 {
-	"type":       "manyideas_core:table_sawing_stone",
-	"ingredient": {
-		"item": "minecraft:spruce_leaves"
-	},
-	"result":     "manyideas_christmas:garland",
-	"count":      4
+	"type": "manyideas_core:table_sawing_stone",
+	"ingredient": "minecraft:spruce_leaves",
+	"result": "manyideas_christmas:garland",
+	"count": 4
 }

@@ -1,22 +1,16 @@
 {
-	"type":    "minecraft:crafting_shaped",
+	"type": "minecraft:crafting_shaped",
 	"pattern": [
 		"G G",
 		"PCP",
 		"G G"
 	],
-	"key":     {
-		"G": {
-			"item": "manyideas_core:plate_gold"
-		},
-		"P": {
-			"item": "minecraft:yellow_stained_glass_pane"
-		},
-		"C": {
-			"item": "minecraft:candle"
-		}
+	"key": {
+		"G": "manyideas_core:plate_gold",
+		"P": "minecraft:yellow_stained_glass_pane",
+		"C": "minecraft:candle"
 	},
-	"result":  {
+	"result": {
 		"id": "manyideas_christmas:golden_star"
 	}
 }

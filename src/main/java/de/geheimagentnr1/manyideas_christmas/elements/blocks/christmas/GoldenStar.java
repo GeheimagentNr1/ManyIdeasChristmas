@@ -1,5 +1,6 @@
 package de.geheimagentnr1.manyideas_christmas.elements.blocks.christmas;
 
+import de.geheimagentnr1.manyideas_core.core.registry.RegistryHelper;
 import de.geheimagentnr1.manyideas_christmas.helpers.FlameHelper;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeMemory;
 import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeVector;
@@ -56,7 +57,7 @@ public class GoldenStar extends LanternBlock implements BlockItemInterface {
 	public GoldenStar() {
 		
 		super(
-			BlockBehaviour.Properties.of()
+			RegistryHelper.withBlockId( BlockBehaviour.Properties.of() )
 				.mapColor( MapColor.GOLD )
 				.requiresCorrectToolForDrops()
 				.strength( 3.5F )

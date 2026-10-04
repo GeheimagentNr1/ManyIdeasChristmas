@@ -1,7 +1,7 @@
 {
 	"render_type": "minecraft:translucent",
 	"textures": {
-		"0":        "block/chain",
+		"0":        "minecraft:block/iron_chain",
 		"1":        "block/yellow_stained_glass",
 		"2":        "block/gold_block",
 		"3":        "block/candle",

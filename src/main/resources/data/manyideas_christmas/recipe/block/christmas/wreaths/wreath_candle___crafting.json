@@ -1,22 +1,16 @@
 {
-	"type":    "minecraft:crafting_shaped",
+	"type": "minecraft:crafting_shaped",
 	"pattern": [
 		"GCG",
 		"CWC",
 		"GCG"
 	],
-	"key":     {
-		"G": {
-			"item": "manyideas_core:plate_gold"
-		},
-		"C": {
-			"item": "minecraft:candle"
-		},
-		"W": {
-			"item": "manyideas_christmas:wreath"
-		}
+	"key": {
+		"G": "manyideas_core:plate_gold",
+		"C": "minecraft:candle",
+		"W": "manyideas_christmas:wreath"
 	},
-	"result":  {
+	"result": {
 		"id": "manyideas_christmas:wreath_candle"
 	}
 }

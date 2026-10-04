@@ -1,5 +1,6 @@
 package de.geheimagentnr1.manyideas_christmas.elements.blocks.christmas;
 
+import de.geheimagentnr1.manyideas_core.core.registry.RegistryHelper;
 import de.geheimagentnr1.manyideas_christmas.elements.block_state_properties.Connected;
 import de.geheimagentnr1.manyideas_christmas.elements.block_state_properties.ModBlockStateProperties;
 import de.geheimagentnr1.manyideas_christmas.helpers.DecorateableBlockHelper;
@@ -8,15 +9,16 @@ import de.geheimagentnr1.manyideas_core.util.voxel_shapes.VoxelShapeVector;
 import de.geheimagentnr1.manyideas_core.core.elements.blocks.BlockItemInterface;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -62,7 +64,7 @@ public class Garland extends Block implements BlockItemInterface {
 	public Garland() {
 		
 		super(
-			BlockBehaviour.Properties.of()
+			RegistryHelper.withBlockId( BlockBehaviour.Properties.of() )
 				.mapColor( MapColor.PLANT )
 				.strength( 2.0F )
 				.sound( SoundType.GRASS )
@@ -104,13 +106,15 @@ public class Garland extends Block implements BlockItemInterface {
 	
 	@NotNull
 	@Override
-	public BlockState updateShape(
+	protected BlockState updateShape(
 		@NotNull BlockState state,
-		@NotNull Direction facing,
-		@NotNull BlockState facingState,
-		@NotNull LevelAccessor level,
+		@NotNull LevelReader level,
+		@NotNull ScheduledTickAccess scheduledTickAccess,
 		@NotNull BlockPos pos,
-		@NotNull BlockPos facingPos ) {
+		@NotNull Direction facing,
+		@NotNull BlockPos facingPos,
+		@NotNull BlockState facingState,
+		@NotNull RandomSource random ) {
 		
 		return connect( state, level, pos );
 	}
@@ -118,7 +122,7 @@ public class Garland extends Block implements BlockItemInterface {
 	@NotNull
 	private static BlockState connect(
 		@NotNull BlockState state,
-		@NotNull LevelAccessor level,
+		@NotNull LevelReader level,
 		@NotNull BlockPos pos ) {
 		
 		Direction direction = state.getValue( BlockStateProperties.HORIZONTAL_FACING );
@@ -146,7 +150,7 @@ public class Garland extends Block implements BlockItemInterface {
 	
 	@NotNull
 	@Override
-	protected ItemInteractionResult useItemOn(
+	protected InteractionResult useItemOn(
 		@NotNull ItemStack pStack,
 		@NotNull BlockState pState,
 		@NotNull Level pLevel,
