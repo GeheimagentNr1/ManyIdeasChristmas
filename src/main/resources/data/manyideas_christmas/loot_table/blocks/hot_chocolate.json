@@ -1,20 +1,23 @@
 {
-	"type":  "minecraft:block",
+	"type": "minecraft:block",
 	"pools": [
 		{
-			"rolls":       1,
+			"rolls": 1,
 			"bonus_rolls": 0.0,
-			"entries":     [
+			"entries": [
 				{
 					"type": "minecraft:item",
 					"name": "manyideas_christmas:hot_chocolate"
 				}
 			],
-			"conditions":  [
+			"conditions": [
 				{
 					"condition": "minecraft:survives_explosion"
 				}
-			]
+			],
+			"condition": {
+				"type": "minecraft:survives_explosion"
+			}
 		}
 	]
 }

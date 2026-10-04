@@ -5,6 +5,7 @@ import de.geheimagentnr1.manyideas_christmas.elements.block_state_properties.Mod
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -78,7 +79,7 @@ public class DecorateableBlockHelper {
 						default -> dropStack = null;
 					}
 					if( dropStack != null && !player.addItem( dropStack ) ) {
-						player.drop( dropStack, false );
+						player.drop( dropStack, false, Prediction.SERVER_ONLY );
 					}
 				}
 				level.setBlock(

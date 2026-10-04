@@ -12,6 +12,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -186,7 +187,7 @@ public abstract class Bowl extends Block implements BlockItemInterface {
 						default -> dropStack = null;
 					}
 					if( dropStack != null && !pPlayer.addItem( dropStack ) ) {
-						pPlayer.drop( dropStack, false );
+						pPlayer.drop( dropStack, false, Prediction.SERVER_ONLY );
 					}
 				}
 				pLevel.setBlock(

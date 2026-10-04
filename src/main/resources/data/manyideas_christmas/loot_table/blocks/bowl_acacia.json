@@ -1,9 +1,9 @@
 {
-	"type":  "minecraft:block",
+	"type": "minecraft:block",
 	"pools": [
 		{
-			"rolls":      1,
-			"entries":    [
+			"rolls": 1,
+			"entries": [
 				{
 					"type": "minecraft:item",
 					"name": "manyideas_christmas:bowl_acacia"
@@ -13,65 +13,96 @@
 				{
 					"condition": "minecraft:survives_explosion"
 				}
-			]
+			],
+			"condition": {
+				"type": "minecraft:survives_explosion"
+			}
 		},
 		{
-			"rolls":      1,
-			"entries":    [
+			"rolls": 1,
+			"entries": [
 				{
-					"type":       "minecraft:item",
+					"type": "minecraft:item",
 					"conditions": [
 						{
-							"condition":  "minecraft:block_state_property",
-							"block":      "manyideas_christmas:bowl_acacia",
+							"condition": "minecraft:block_state_property",
+							"block": "manyideas_christmas:bowl_acacia",
 							"properties": {
 								"bowl_content": "apples"
 							}
 						}
 					],
-					"functions":  [
+					"functions": [
 						{
 							"function": "minecraft:set_count",
-							"count":    7
+							"count": 7
 						}
 					],
-					"name":       "minecraft:apple"
+					"name": "minecraft:apple",
+					"condition": {
+						"type": "minecraft:match_block",
+						"blocks": "manyideas_christmas:bowl_acacia",
+						"state": {
+							"bowl_content": "apples"
+						}
+					},
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": 7
+					}
 				}
 			],
 			"conditions": [
 				{
 					"condition": "minecraft:survives_explosion"
 				}
-			]
+			],
+			"condition": {
+				"type": "minecraft:survives_explosion"
+			}
 		},
 		{
-			"rolls":      1,
-			"entries":    [
+			"rolls": 1,
+			"entries": [
 				{
-					"type":       "minecraft:item",
+					"type": "minecraft:item",
 					"conditions": [
 						{
-							"condition":  "minecraft:block_state_property",
-							"block":      "manyideas_christmas:bowl_acacia",
+							"condition": "minecraft:block_state_property",
+							"block": "manyideas_christmas:bowl_acacia",
 							"properties": {
 								"bowl_content": "cookies"
 							}
 						}
 					],
-					"functions":  [
+					"functions": [
 						{
 							"function": "minecraft:set_count",
-							"count":    4
+							"count": 4
 						}
 					],
-					"name":       "minecraft:cookie"
+					"name": "minecraft:cookie",
+					"condition": {
+						"type": "minecraft:match_block",
+						"blocks": "manyideas_christmas:bowl_acacia",
+						"state": {
+							"bowl_content": "cookies"
+						}
+					},
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": 4
+					}
 				}
 			],
 			"conditions": [
 				{
 					"condition": "minecraft:survives_explosion"
 				}
-			]
+			],
+			"condition": {
+				"type": "minecraft:survives_explosion"
+			}
 		}
 	]
 }
