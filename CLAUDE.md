@@ -1,144 +1,53 @@
 # CLAUDE.md - ManyIdeas Christmas
 
-## Projekt-Übersicht
+10 festliche Weihnachts-Dekorationsblöcke: Weihnachtsbaum, goldener Stern, Girlande, Kranz (auch mit Kerze), Kamine (je Holzart), Schalen mit Inhalt (je Holzart), Geschenk, heiße Schokolade, Plüschkatze. Mod-ID `manyideas_christmas`, Package `de.geheimagentnr1.manyideas_christmas`, Client+Server. Baut auf ManyIdeasCore auf.
 
-**ManyIdeas Christmas** ist ein NeoForge Minecraft Mod.
-- **Mod ID**: `manyideas_christmas`
-- **Package**: `de.geheimagentnr1.manyideas_christmas`
-- **Java Version**: 21 (`develop_26.1`/`develop_26.3`: 25, `jdk-25.0.4.7-hotspot`)
-- **NeoForge Version**: je Branch, siehe Tabelle
+Diese Datei ist auf allen `develop_*`-Branches identisch; Quelle: `../Docs/mod-claude/ManyIdeasChristmas.md` (Änderungen dort, dann `Docs/tools/sync_mod_claude_md.sh`). Versionsstand: [`../Docs/VERSIONEN.md`](../Docs/VERSIONEN.md).
 
-| Branch | MC | Range | NeoForge (kompiliert gegen) | Core-Jar (`mic_minecraft_version`) | Hinweis |
-|---|---|---|---|---|---|
-| `develop_1.21.1` | 1.21.1 | `[1.21.1,1.21.10]` (Release 2.0.1, lädt nur auf 1.21.1) | `21.1.216` | 1.21.1 | Kein 2.0.2-Release nötig |
-| `develop_1.21.2` | 1.21.2 - 1.21.4 | `[1.21.2,1.21.5)` | `21.2.1-beta` | 1.21.2 | Blöcke per Supplier + `RegistryHelper.withBlockId`, `InteractionResult`-Mapping, `updateShape`-Signatur, Chat-Meldung per `displayClientMessage`, Rezept-JSON, Client-Item-Definitionen, Ketten-Overlay, Keks-Textur im Block-Atlas |
-| `develop_1.21.5` | 1.21.5 - 1.21.11 | `[1.21.5,1.21.12)` | `21.5.98` | 1.21.5 | Gleicher Code; eigenes Jar, weil `Level.playSound( Player, .. )` ab 1.21.5 `( Entity, .. )` ist (sonst `NoSuchMethodError`). Bytecode identisch mit Core 1.21.6/1.21.9/1.21.11 |
-| `develop_26.1` | 26.1 - 26.2 | `[26.1,26.3)` | `26.1.0.19-beta` (Java 25) | 26.1 | 26.x-Tooling, Katzen-Schnurren über `SoundEvents.CAT_SOUNDS` (`CLASSIC`), `sendSystemMessage`, Kette direkt `iron_chain` |
-| `develop_26.3` | 26.3 | `[26.3,27)` | `26.3.0.36-beta` (Java 25) | 26.3 | `Player.drop( .., Prediction.SERVER_ONLY )`, Loot in beiden Formaten (`match_block`, `set_count`, `explosion_decay`) |
+## Versionen
 
-2.0.2 released 2026-10-04 (ingame getestet auf 1.21.2, 1.21.4, 1.21.5, 1.21.8, 1.21.9, 1.21.11, 26.1, 26.2, 26.3), abhängig von ManyIdeasCore `[3.0.2,)` und RecipesLibrary `[4.0.1,)` (`rl_minecraft_version`). Details: [`../Docs/migrations/1.21.1-to-1.21.2.md`](../Docs/migrations/1.21.1-to-1.21.2.md) 4i, [`../Docs/migrations/1.21.11-to-26.1.md`](../Docs/migrations/1.21.11-to-26.1.md).
-
-**Ressourcen:** Kette (goldener Stern, Girlanden) wie ManyIdeasHalloween: Basis-Modelle mit `minecraft:block/iron_chain`, Overlay `mc_1_21_2` (`formats` + `min_format`/`max_format` `[34,64]`) mit `block/chain` für 1.21.2 - 1.21.8; in den 26.x-Branches kein Overlay. Die Keks-Füllung der Schalen nutzt `manyideas_christmas:block/cookie`, geladen per `assets/minecraft/atlases/blocks.json` aus `minecraft:item/cookie` (Block-Modelle dürfen ab 1.21.11 nur Block-Atlas-Texturen nutzen).
-
-Bietet 10 niedliche und festliche Weihnachts-Dekorationsblöcke.
+- Jars, Branches, Ranges und Tags: [`../Docs/VERSIONEN.md`](../Docs/VERSIONEN.md). NeoForge ab `develop_1.21.1`, Forge `develop_1.18.1` - `develop_1.21` plus `develop_1.21.1_forge`.
+- Abhängigkeiten werden in `custom.gradle` als Maven-Jars aus `ModdingMavenRepositories` gebunden: `ManyIdeasCore-<mc>:${mic_version}` und `RecipesLibrary-<mc>:${rl_version}`. Bis 1.21.1 (auch Forge) ist `<mc>` = `${minecraft_version}`; ab 1.21.2 `${mic_minecraft_version}`/`${rl_minecraft_version}`, bewusst getrennt von `minecraft_version`, damit ein Christmas-Jar gegen das Core-/RecipesLibrary-Jar der niedrigsten Version kompiliert und mehrere davon abdecken kann.
+- Jar-Grenzen hängen hier vor allem an Vanilla-Änderungen (z. B. eigenes Jar ab 1.21.5 wegen `Level.playSound( Player, .. )` → `( Entity, .. )`), nicht nur an Core.
+- CurseForge-Projekt `736753`, Modrinth `9P4EZygx`.
 
 ## Abhängigkeiten
 
-- **ManyIdeas Core** (`manyideas_core`) - Required
-- **Recipes Library** (`recipes_lib`) - Required
-
-## Projektstruktur
-
-```
-src/main/java/de/geheimagentnr1/manyideas_christmas/
-├── ManyIdeasChristmas.java                # Haupt-Mod-Klasse (erweitert AbstractMod)
-├── elements/
-│   ├── block_state_properties/            # Custom BlockState Properties
-│   │   ├── BowlContent.java               # Enum für Schüssel-Inhalte
-│   │   ├── Connected.java                 # Verbindungs-States
-│   │   ├── DecorationType.java            # Dekorations-Typen
-│   │   └── ModBlockStateProperties.java   # Property-Definitionen
-│   ├── blocks/                            # Block-Definitionen
-│   │   └── ModBlocksRegisterFactory.java
-│   └── creative_mod_tabs/                 # Creative-Tab Registration
-└── helpers/
-    ├── DecorateableBlockHelper.java       # Helper für dekorierbare Blöcke
-    └── FlameHelper.java                   # Helper für Flammen-Effekte
-```
+- **ManyIdeasCore** (`manyideas_core`, required) - `AbstractMod`, Registrierung, Tischsägen-Rezepttyp, Rezept-Zutat `manyideas_core:rainbow_stained_glass_block`.
+- **RecipesLibrary** (`recipes_lib`, required ab 1.20.6) - nur JSON: Rezept der heißen Schokolade mit `recipes_lib:components` (Wasserflasche über `potion_contents`).
+- Forge 1.20 - 1.21.1-Forge zusätzlich MinecraftForgeAPI ([`../Docs/forge/README.md`](../Docs/forge/README.md)).
 
 ## Architektur
 
-Dieser Mod erweitert `AbstractMod` aus ManyIdeas Core:
-```java
-@Mod( ManyIdeasChristmas.MODID )
-public class ManyIdeasChristmas extends AbstractMod {
-    @Override
-    protected void initMod() {
-        ModBlocksRegisterFactory modBlocksRegisterFactory = registerEventHandler( new ModBlocksRegisterFactory() );
-        registerEventHandler( new ModCreativeModeTabRegisterFactory( modBlocksRegisterFactory ) );
-    }
-}
-```
+- `ManyIdeasChristmas` erweitert Core-`AbstractMod` (Forge 1.20+: aus MinecraftForgeAPI), registriert `ModBlocksRegisterFactory` + `ModCreativeModeTabRegisterFactory`.
+- `elements/blocks/christmas/` - `ChristmasTree`, `GoldenStar`, `Garland`, `Present`, `HotChocolate`, `PlushiCat`, `bowls/` (`Bowl` + Holzarten), `fireplaces/` (`Fireplace` + Holzarten), `wreaths/`.
+- `elements/block_state_properties/` - `BowlContent`, `Connected`, `DecorationType`, `ModBlockStateProperties`.
+- `helpers/DecorateableBlockHelper` (Dekoration per Rechtsklick mit Goldbarren, Süßbeeren, Glowstone-Staub ..), `helpers/FlameHelper` (Flammen-Partikel für Kerzen und Stern); `WreathCandle` wird mit dem Feuerzeug angezündet.
+- Ressourcen: Rezepte überwiegend `manyideas_core:table_sawing_stone`; `assets/minecraft/atlases/blocks.json` lädt die Keks-Textur in den Block-Atlas.
 
-## Besonderheiten
+## Funktionen, Befehle, Konfiguration
 
-- **Custom BlockState Properties**: Eigene Enums für Block-Zustände (BowlContent, Connected, DecorationType)
-- **Helper-Klassen**: Wiederverwendbare Logik für Dekorationen und Flammen
+Keine Befehle, keine Config. Blöcke werden per Rechtsklick dekoriert, befüllt oder angezündet; Schalen und Geschenke droppen ihren Inhalt über Loot-Funktionen (`set_count`).
 
-## Code-Stil
+## Fallstricke
 
-- **Annotations**: `@NotNull` aus `org.jetbrains.annotations`
-- **Lombok**: Projekt nutzt Lombok
-- **Formatierung**: Leerzeichen nach `(` und vor `)` bei Methodenaufrufen
+- **Registrierung ab 1.21.2:** `RegistryEntry.create( name, () -> new X() )`, Blöcke, die direkt Vanilla-Klassen erweitern, setzen die ID mit `RegistryHelper.withBlockId(..)` (siehe Core).
+- **Client-Chat-Meldung** im Client-Zweig von `useItemOn`: ab 1.21.2 `player.displayClientMessage( c, false )`, ab 26.1 wieder `sendSystemMessage( c )`.
+- **`getSlotForHand`** fehlt ab 1.21.9 → Hand-Mapping `MAIN_HAND ? MAINHAND : OFFHAND` (alle Versionen).
+- **Katzen-Schnurren ab 26.1:** `SoundEvents.CAT_PURR` entfernt → `SoundEvents.CAT_SOUNDS.get( CatSoundVariants.SoundSet.CLASSIC )...purrSound()`.
+- **26.3:** `Player.drop( .., Prediction )`; Loot-Tabellen in beiden Formaten, auch `set_count`/`explosion_decay` als `modifier` - alte `functions` werden still ignoriert (Schalen/Geschenke droppen dann ohne Inhalt).
+- **Keks-Füllung (ab 1.21.11 Pflicht):** Block-Modelle dürfen nur Block-Atlas-Texturen nutzen → `manyideas_christmas:block/cookie` per `atlases/blocks.json` aus `minecraft:item/cookie` (funktioniert auch auf älteren Versionen).
+- **Kette (goldener Stern, Girlanden):** Basis-Modelle mit `block/iron_chain`, für 1.21.2 - 1.21.8 Overlay `mc_1_21_2` mit `formats` **und** `min_format`/`max_format` `[34,64]` und `block/chain`; ein Overlay ab Format 65 mit `formats` verwirft der 1.21.9+-Client komplett (nur Client-Log). 26.x-Branches ohne Overlay.
+- **Creative-Tab:** `getDisplayItems()` leer lassen, sonst doppelte Stacks (Absturz ab NeoForge 26.2.0.88).
+- bincheck mit gekoppeltem Core-Jar laufen lassen, sonst bleiben Core-API-Unterschiede unsichtbar ([`../Docs/migrations/1.21.1-to-1.21.2.md`](../Docs/migrations/1.21.1-to-1.21.2.md) 4i).
 
-## Build & Test
+## Testen
 
-```bash
-./gradlew build
-./gradlew runClient
-./gradlew runServer
-```
+- Allgemein: [`../Docs/testing/README.md`](../Docs/testing/README.md). Mit passendem Core- und RecipesLibrary-Jar in Server-Pack und Client-Instanz.
+- Prüfpunkte: alle Blöcke sichtbar (Kette, Kekse - Client-Log auf lila-schwarze Modelle prüfen), Schalen befüllen und abbauen (Inhalt droppt), Geschenk, Kerzenkranz anzünden (Feuerzeug nutzt sich ab, Haupt- und Nebenhand), Plüschkatze schnurrt, Rezept heiße Schokolade (Wasserflasche) und Tischsägen-Rezepte, Kreativinventar öffnen.
 
-## Deployment
+## Links
 
-- **CurseForge**: `./gradlew curseforge`
-- **Modrinth**: `./gradlew modrinth`
-
-## Testing
-
-### Java-Versionen
-
-Verschiedene Java-Versionen sind unter `C:\Program Files\Eclipse Adoptium` installiert. Für einen Gradle-Build muss die passende Java-Version gewählt werden:
-
-```powershell
-# Java 21 für MC 1.20.5+ (NeoForge)
-$env:JAVA_HOME = "C:\Program Files\Eclipse Adoptium\jdk-21.0.12.8-hotspot"
-./gradlew build
-```
-
-### Unit Tests (JUnit 5)
-
-Für reine Logik-Tests ohne Minecraft-Abhängigkeiten:
-
-```bash
-./gradlew test
-```
-
-Tests liegen unter `src/test/java/`. Ergebnisse: `build/reports/tests/test/index.html`
-
-### NeoForge GameTest Framework
-
-Für Integration Tests in einer echten Minecraft-Umgebung:
-
-```bash
-./gradlew runGameTestServer
-```
-
-GameTest-Klassen werden mit `@GameTestHolder` annotiert und liegen unter `src/main/java/.../elements/gametests/`.
-
-### CI/CD (GitHub Actions)
-
-Der Workflow `.github/workflows/build-and-test.yml` führt automatisch aus:
-1. **Build**: Kompiliert den Mod
-2. **Unit Tests**: Führt JUnit Tests aus
-3. **GameTests**: Startet GameTestServer (optional)
-
-### Was kann automatisiert getestet werden?
-
-| Aspekt | Automatisiert? | Methode |
-|--------|----------------|---------|
-| Utility-Klassen | ✅ | JUnit |
-| Config-Parsing | ✅ | JUnit |
-| Commands | ✅ | GameTest |
-| Block/Item-Verhalten | ✅ | GameTest |
-| Multi-MC-Version | ⚠️ Pro Branch | CI Matrix |
-
-## Referenzen
-
-- [NeoForge Migration Primer](https://docs.neoforged.net/primer/docs/) — Dokumentiert API-Aenderungen zwischen Minecraft/NeoForge-Versionen; nuetzlich fuer die Pruefung von Breaking Changes beim Upgrade auf neue Versionen
-
----
-
-## Wissensdatenbank
-
-Versionsübergreifende Migrations- und Entwicklungs-Erkenntnisse (Breaking Changes, Fixes, Testumgebungs-Patterns) werden zentral in [`../Docs/`](../Docs/) gepflegt. Bei neuen relevanten Erkenntnissen dort ergänzen, nicht nur hier.
+- Wiki: https://github.com/GeheimagentNr1/ManyIdeasChristmas/wiki
+- CurseForge: https://www.curseforge.com/minecraft/mc-mods/manyideas-christmas, Modrinth: https://modrinth.com/mod/9P4EZygx
+- [`../Docs/migrations/1.21.1-to-1.21.2.md`](../Docs/migrations/1.21.1-to-1.21.2.md) 4i, [`../Docs/migrations/1.21.11-to-26.1.md`](../Docs/migrations/1.21.11-to-26.1.md), [`../Docs/migrations/BREAKING_CHANGES.md`](../Docs/migrations/BREAKING_CHANGES.md)
